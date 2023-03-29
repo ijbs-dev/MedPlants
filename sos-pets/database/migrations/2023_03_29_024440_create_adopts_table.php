@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('adopts', function (Blueprint $table) {
             $table->id();
             $table->date('adoption_date');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');;
-            $table->foreignId('pet_id')->constrained()->onDelete('cascade');;
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('pet_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
