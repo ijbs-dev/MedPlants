@@ -20,7 +20,7 @@ class PetController extends Controller
      */
     public function create()
     {
-        //
+        return view('pets.create');
     }
 
     /**
@@ -28,7 +28,22 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->all();
+
+        $data['user_id'] = auth()->user()->id;
+
+        $id = $data['user_id'];
+
+        //checa se a imagem veio na requisição e se houve erro no upload
+        if($request->hasFile('fotos') || $request->fotos->isValid()){
+            $request->fotos->store("pets/$id","public");
+        }
+
+        $register = Pet::create($data);
+
+        return redirect()->back();
+
     }
 
     /**

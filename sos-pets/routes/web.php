@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PetController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('pets.index');
+})->name('pets.index');
+
+
+Route::get('/pets/create',[PetController::class,'create'])->middleware('auth')->name('pets.create');
+
+Route::post('/pets/store',[PetController::class,'store'])->name('pets.store');
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
