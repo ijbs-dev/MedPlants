@@ -28,6 +28,10 @@
         <a href="#" class="text-xl hover:text-cyan-500 duration-500">Contato</a>
       </li>
 
+      <li class="mx-4 my-6 md:my-0">
+        <a href="{{ route('register') }}" class="text-xl hover:text-cyan-500 duration-500">Cadastrar</a>
+      </li>
+
  @auth
  <div class="hidden sm:flex sm:items-center sm:ml-6" style="float:right">
     <x-dropdown align="righ" width="48">

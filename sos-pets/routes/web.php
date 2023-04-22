@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/pets/create',[PetController::class,'create'])->middleware('auth')->name('pets.create');
 
-Route::post('/pets/store',[PetController::class,'store'])->name('pets.store');
+Route::post('/pets/store',[PetController::class,'store'])->middleware('auth')->name('pets.store');
 
 
 
