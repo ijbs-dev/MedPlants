@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
 
 
-                    {{ __("You're logged in!")  }} <p>{{ Auth::user()->email }}</p>
+                    {{ __("Você está conectado!")  }} <p>{{ Auth::user()->email }}</p>
                 </div>
             </div>
         </div>
