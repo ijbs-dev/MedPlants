@@ -12,7 +12,7 @@ class PetController extends Controller
      */
     public function index()
     {
-        //
+        return view('pets.index');
     }
 
     /**
