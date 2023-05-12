@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboardsshhs') }}
+            {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
 
 
-                    {{ __("You're logged in!")  }} <p>{{ Auth::user()->email }}</p>
+                    {{ __("Você está conectado!")  }} <p>{{ Auth::user()->email }}</p>
                 </div>
             </div>
         </div>
