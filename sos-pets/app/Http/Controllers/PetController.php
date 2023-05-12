@@ -16,9 +16,6 @@ class PetController extends Controller
         $pets = Pet::all();
 
         return view('pets.index', ['pets' => $pets]);
-
-        
-
     }
 
     /**
@@ -37,6 +34,7 @@ class PetController extends Controller
     {
 
 
+
         $data = $request->all();
 
         $data['user_id'] = auth()->user()->id;
@@ -44,8 +42,8 @@ class PetController extends Controller
         $id = $data['user_id'];
 
         //checa se a imagem veio na requisição e se houve erro no upload
-        if($request->hasFile('fotos') || $request->fotos->isValid()){
-            $caminho_imagem =  $request->fotos->store("pets","public");
+        if ($request->hasFile('fotos') || $request->fotos->isValid()) {
+            $caminho_imagem =  $request->fotos->store("pets", "public");
         }
         $data['fotos'] = $caminho_imagem;
 
@@ -53,8 +51,7 @@ class PetController extends Controller
         $register = Pet::create($data);
 
         //return redirect()->back();
-        return redirect()->route('home')->with('success', 'Pet cadastrado com sucesso!');
-
+        return redirect()->route('pets.index')->with('success', 'Pet cadastrado com sucesso!');
     }
 
     /**
@@ -62,7 +59,6 @@ class PetController extends Controller
      */
     public function show(Pet $pet)
     {
-
     }
 
     /**
