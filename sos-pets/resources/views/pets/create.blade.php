@@ -5,17 +5,6 @@
 @section('conteudo')
 
 
-{{-- <x-slot name="trigger">
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-
-        <x-dropdown-link :href="route('logout')"
-                onclick="event.preventDefault();
-                            this.closest('form').submit();">
-            {{ __('Sairrr') }}
-        </x-dropdown-link>
-    </form>
-</x-slot> --}}
 
 <h1>Cadastrar</h1>
 
@@ -27,7 +16,7 @@
     <input type="text" name="idade"> <br>
 
     <select name="especie">
-        <option disabled selected>Espécie</option>
+        <option disabled selected>Tipo</option>
         <option value="cachorro">Cachorro</option>
         <option value="gato">Gato</option>
     </select>
@@ -35,8 +24,15 @@
     Raça:
     <input type="text" name="raca"><br>
 
-    Porte:
-    <input type="text" name="porte"><br>
+    <select name="porte">
+        <option disabled selected>Porte</option>
+        <option value="Pequeno">Pequeno</option>
+        <option value="Médio">Médio</option>
+        <option value="Grande">Grande</option>
+    </select>
+
+    <br>
+
 
     <select name="sexo">
         <option disabled selected>Sexo</option>
