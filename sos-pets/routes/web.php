@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', [PetController::class,'index'])->name('pets.index');
 
-Route::get('/',[PetController::class,'index'])->name('pets.index');
+
 
 
 Route::get('/pets/create',[PetController::class,'create'])->middleware('auth')->name('pets.create');

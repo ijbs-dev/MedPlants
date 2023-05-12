@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('sexo');
             $table->text('descricao');
             $table->string('fotos');
+            $table->float('valor', 8, 2)->nullable();
             $table->timestamps();
         });
     }
