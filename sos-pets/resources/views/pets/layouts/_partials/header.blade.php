@@ -72,13 +72,12 @@
     Login
 </a>
 
-@endauth
 
 
     </ul>
   </nav>
 
-
+@endauth
 
 
 <script>
