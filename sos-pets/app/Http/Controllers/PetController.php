@@ -33,7 +33,7 @@ class PetController extends Controller
     public function store(Request $request)
     {
 
-
+      
 
         $data = $request->all();
 
@@ -43,7 +43,7 @@ class PetController extends Controller
 
         //checa se a imagem veio na requisição e se houve erro no upload
         if ($request->hasFile('fotos') || $request->fotos->isValid()) {
-            $caminho_imagem =  $request->fotos->store("pets", "public");
+            $caminho_imagem =  $request->fotos->store("pets");
         }
         $data['fotos'] = $caminho_imagem;
 
