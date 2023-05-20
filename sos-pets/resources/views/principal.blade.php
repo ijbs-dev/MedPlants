@@ -12,7 +12,7 @@
     
     <!-- <title>@yield('titulo')</title> -->
 </head>
-<body>
+<body class="bg-color-primary text-color-white tracking-wider">
 
 
     @include('pets.layouts._partials.header')
