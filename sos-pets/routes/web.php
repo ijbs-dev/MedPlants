@@ -18,14 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PetController::class,'index'])->name('pets.index');
 
-
-
-
 Route::get('/pets/create',[PetController::class,'create'])->middleware('auth')->name('pets.create');
 
 Route::post('/pets/store',[PetController::class,'store'])->middleware('auth')->name('pets.store');
 
-
+Route::get('/pets/{id}',[PetController::class,'show'])->name('pets.show');
 
 
 Route::get('/dashboard', function () {

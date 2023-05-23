@@ -43,7 +43,7 @@ class PetController extends Controller
 
         //checa se a imagem veio na requisição e se houve erro no upload
         if ($request->hasFile('fotos') || $request->fotos->isValid()) {
-            $caminho_imagem =  $request->fotos->store("pets");
+            $caminho_imagem =  $request->fotos->store("pets", "public");
         }
         $data['fotos'] = $caminho_imagem;
 
@@ -57,8 +57,12 @@ class PetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pet $pet)
+    public function show($id)
     {
+        if(!$pet = Pet::find($id)){
+            return redirect()->route('pets.index');
+        }
+        return view('pets.show',compact('pet'));
     }
 
     /**

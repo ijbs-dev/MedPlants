@@ -1,5 +1,5 @@
 
-@extends('pets.layouts.principal')
+@extends('principal')
 
 @section('titulo', 'Cadastro')
 
