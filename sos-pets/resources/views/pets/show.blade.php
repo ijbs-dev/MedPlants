@@ -15,7 +15,6 @@
       <!-- Conteúdo do produto -->
       <div class="w-1/2 pl-12">
         <h2 class="text-3xl font-bold mb-4">{{ $pet->nome }}</h2>
-        <p class="text-gray-700 mb-4">{{ $pet->descricao }}</p>
 
         <!-- Outros itens -->
         <ul class="mb-4">
@@ -23,6 +22,8 @@
           <li class="text-gray-700"><span class="text-base font-bold">Raça:</span> {{ $pet->raca }}</li>
           <li class="text-gray-700"><span class="text-base font-bold">Porte:</span> {{ $pet->porte }}</li>
           <li class="text-gray-700"><span class="text-base font-bold">Sexo:</span> {{ $pet->sexo }}</li>
+          <li class="text-gray-700"><span class="text-base font-bold">Descrição:</span> {{ $pet->descricao }}</li>
+
         </ul>
 
         <!-- Botão -->

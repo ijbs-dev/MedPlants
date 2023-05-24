@@ -16,7 +16,7 @@
           <div class="hidden md:flex items-center space-x-1">
             @auth
             <a href="{{ route('pets.create') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Cadastrar Pets</a>
-            <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Meus Pets</a>
+            <a href="{{ route('pets.userPets') }}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Meus Pets</a>
             @endauth
             <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Sobre</a>
             <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Contato</a>

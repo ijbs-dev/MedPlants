@@ -43,8 +43,7 @@ class PetController extends Controller
 
         //checa se a imagem veio na requisição e se houve erro no upload
         if ($request->hasFile('fotos') || $request->fotos->isValid()) {
-            $caminho_imagem =  $request->fotos->store("pets", "public");
-        }
+            $caminho_imagem =  $request->fotos->store("pets", "public");        }
         $data['fotos'] = $caminho_imagem;
 
 
@@ -87,5 +86,13 @@ class PetController extends Controller
     public function destroy(Pet $pet)
     {
         //
+    }
+
+    public function userPets() 
+    {
+        $user = auth()->user();
+        $pets = $user->pets;
+        dd($user);
+
     }
 }
