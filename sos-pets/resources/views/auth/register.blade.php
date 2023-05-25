@@ -82,5 +82,3 @@
 
 
 </x-guest-layout>
-
-
