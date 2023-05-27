@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PetController extends Controller
@@ -33,7 +34,7 @@ class PetController extends Controller
     public function store(Request $request)
     {
 
-      
+
 
         $data = $request->all();
 
@@ -43,7 +44,8 @@ class PetController extends Controller
 
         //checa se a imagem veio na requisição e se houve erro no upload
         if ($request->hasFile('fotos') || $request->fotos->isValid()) {
-            $caminho_imagem =  $request->fotos->store("pets", "public");        }
+            $caminho_imagem =  $request->fotos->store("pets", "public");
+        }
         $data['fotos'] = $caminho_imagem;
 
 
@@ -58,10 +60,10 @@ class PetController extends Controller
      */
     public function show($id)
     {
-        if(!$pet = Pet::find($id)){
+        if (!$pet = Pet::find($id)) {
             return redirect()->route('pets.index');
         }
-        return view('pets.show',compact('pet'));
+        return view('pets.show', compact('pet'));
     }
 
     /**
@@ -88,11 +90,13 @@ class PetController extends Controller
         //
     }
 
-    public function userPets() 
+    public function userPets()
     {
         $user = auth()->user();
-        $pets = $user->pets;
-        dd($user);
+        $id = $user->id;
+        $user = User::find($id);
+        $userPets = $user->pets()->get();
 
+        return view('pets.userpets', compact('userPets'));
     }
 }

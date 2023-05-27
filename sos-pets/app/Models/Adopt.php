@@ -8,15 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Adopt extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'adoption_date',
         'user_id',
         'pet_id',
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
+   
 
 }
