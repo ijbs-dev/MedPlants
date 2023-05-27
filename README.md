@@ -43,21 +43,39 @@ npm run dev
 
 - Procedimento Execução no github
 
-        1) git status = verificar 
-        2) git branch = Idendetifica qual branch está 
-
-Obs.: Os proximos 2 comandos precisam de cuidado  
+1) Verificar Status 
         
-        git pull = Ao identificar que esta na main exexuta para atualizar 
-        git checkout main = Se não não estiver na main exexuta para redirecionar para main 
+        git status  
+        
+2) Idendetifica qual branch está 
+        
+        git branch
+        
+Obs.: Os proximos 2 comandos precisam de cuidado  
 
-        3) git checkout -b NOMENOVABRANCH = Cria uma nova branch com novo nome 
+Ao identificar que esta na main exexuta para atualizar 
 
-        4) git add . 
+        git pull 
 
-        5) git commit -m "mensagem" 
+Se não não estiver na main exexuta para redirecionar para main 
 
-        6) git push -u origin NOMENOVABRANCH 
+        git checkout main  
+
+3) Cria uma nova branch com novo nome 
+
+        git checkout -b NOMENOVABRANCH
+        
+4) Adiciona tudo
+
+        git add . 
+
+5) Faz commit
+
+        git commit -m "mensagem" 
+
+6) Carregar no remoto
+
+        git push -u origin NOMENOVABRANCH 
 
 
 
