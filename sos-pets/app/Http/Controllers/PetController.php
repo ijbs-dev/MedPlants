@@ -34,8 +34,6 @@ class PetController extends Controller
     public function store(Request $request)
     {
 
-
-
         $data = $request->all();
 
         $data['user_id'] = auth()->user()->id;
@@ -79,7 +77,25 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
-        //
+        $pet->update([
+            'nome' => $request->nome,
+            'idade' => $request->idade,
+            'especie' => $request->especie,
+            'raca' => $request->raca,
+            'porte' => $request->porte,
+            'sexo' => $request->sexo,
+            'descricao' => $request->descricao,
+            'fotos' => $request->fotos,
+
+        ]);
+
+         //checa se a imagem veio na requisição e se houve erro no upload
+         if ($request->hasFile('fotos') || $request->fotos->isValid()) {
+            $caminho_imagem =  $request->fotos->store("pets", "public");
+        }
+        $data['fotos'] = $caminho_imagem;
+
+        return redirect(route('pets.update'));
     }
 
     /**
@@ -87,7 +103,8 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        //
+        $pet->delete();
+        return redirect(route('pets.userPets'));
     }
 
     public function userPets()

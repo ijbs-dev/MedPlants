@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
 
     <!-- <title>@yield('titulo')</title> -->
 </head>
+
 <body class="bg-color-primary text-color-white tracking-wider">
 
 
@@ -20,7 +22,7 @@
     <div class="container mx-auto">
 
         @yield('conteudo')
-        
+
     </div>
 
 
@@ -31,4 +33,5 @@
 
 
 </body>
+
 </html>
