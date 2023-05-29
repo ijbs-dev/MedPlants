@@ -4,12 +4,12 @@
 
 @section('conteudo')
 
-    <x-app-layout>
-        <x-slot name="header">
+     <x-app-layout>
+        {{-- <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('CADASTRO->Pets') }}
             </h2>
-        </x-slot>
+        </x-slot>  --}}
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -98,7 +98,7 @@
 
                             <div x-data="{ showNew: false }">
                                 <div x-show="!showNew">
-                                    <x-primary-button @click="showNew = true">New</x-primary-button>
+                                    <x-primary-button @click="showNew = true">Novo</x-primary-button>
                                 </div>
 
                                 <template x-if="showNew">
@@ -237,7 +237,7 @@
             </div>
         </div>
         </div>
-    </x-app-layout>
+     </x-app-layout> 
 
     <!--
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">

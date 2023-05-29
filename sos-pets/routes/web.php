@@ -22,6 +22,9 @@ Route::post('/pets/store',[PetController::class,'store'])->middleware('auth')->n
 Route::get('/pets/{id}',[PetController::class,'show'])->name('pets.show');
 Route::get('/meusPets',[PetController::class,'userPets'])->name('pets.userPets');
 
+Route::delete('/pets/{id}',[PetController::class,'destroy'])->name('pets.show');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
