@@ -85,15 +85,21 @@ class PetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pet $pet)
+    public function destroy($id)
     {
-        //
+
+        $pet = Pet::find($id);
+
+        $pet->delete();
+
+        return redirect()->route('pets.userPets')->with('success', 'Pet excluído com sucesso!');
     }
 
     public function userPets()
     {
         $user = auth()->user();
         $id = $user->id;
+
         $user = User::find($id);
         $userPets = $user->pets()->get();
 

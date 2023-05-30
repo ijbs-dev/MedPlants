@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::delete('/pets/excluir/{id}',[PetController::class,'destroy'])->name('pets.destroy');
 
 Route::get('/', [PetController::class,'index'])->name('pets.index');
 Route::get('/pets/create',[PetController::class,'create'])->middleware('auth')->name('pets.create');

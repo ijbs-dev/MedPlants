@@ -44,7 +44,13 @@
                                             <div x-data="{ showDelete: false, showEdit: false }">
                                                 <div class="flex gap-2">
                                                     <div x-show="!showDelete">
-                                                        <x-danger-button @click="showDelete = true">Apagar</x-danger-button>
+                                                        {{-- <x-danger-button @click="showDelete = true">Apagar</x-danger-button> --}}
+                                                        <form method="post" action="{{ route('pets.destroy', $pet->id) }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <x-danger-button @click="showDelete = true">Apagar
+                                                            </x-danger-button>
+                                                        </form>
                                                     </div>
                                                     <div x-show="!showEdit">
                                                         <x-primary-button @click="showEdit = true">Editar</x-primary-button>
@@ -98,7 +104,7 @@
 
                             <div x-data="{ showNew: false }">
                                 <div x-show="!showNew">
-                                    <x-primary-button @click="showNew = true">New</x-primary-button>
+                                    <x-primary-button @click="showNew = true">Novo</x-primary-button>
                                 </div>
 
                                 <template x-if="showNew">
