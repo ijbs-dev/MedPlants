@@ -11,6 +11,7 @@ class PetController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
 
@@ -77,9 +78,13 @@ class PetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pet $pet)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->only('nome', 'idade', 'especie', 'raca', 'porte', 'sexo', 'descricao');
+
+        Pet::where('id', $id)->update($data);
+
+        return redirect()->route('pets.userPets');
     }
 
     /**
