@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PetController extends Controller
 {
@@ -35,8 +36,6 @@ class PetController extends Controller
     public function store(Request $request)
     {
 
-
-
         $data = $request->all();
 
         $data['user_id'] = auth()->user()->id;
@@ -53,7 +52,7 @@ class PetController extends Controller
         $register = Pet::create($data);
 
         //return redirect()->back();
-        return redirect()->route('pets.index')->with('success', 'Pet cadastrado com sucesso!');
+        return redirect()->route('pets.userPets')->with('success', 'Pet cadastrado com sucesso!');
     }
 
     /**
@@ -80,9 +79,26 @@ class PetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->only('nome', 'idade', 'especie', 'raca', 'porte', 'sexo', 'descricao');
+        //$data = $request->only('nome', 'idade', 'especie', 'raca', 'porte', 'sexo', 'descricao');
+        if (!$pet = Pet::find($id)) {
+            return redirect()->back();
+        }
 
-        Pet::where('id', $id)->update($data);
+        $data = $request->all();
+
+        if ($request->hasFile('fotos')) {
+            if(Storage::exists($pet->fotos)){
+                Storage::delete($pet->fotos);
+            }
+            $caminho_imagem =  $request->fotos->store("pets", "public");
+            $data['fotos'] = $caminho_imagem;
+        }
+
+
+
+        //Pet::where('id', $id)->update($data);
+
+        $pet->update($data);
 
         return redirect()->route('pets.userPets');
     }
@@ -92,8 +108,13 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
-
-        $pet = Pet::find($id);
+        if (!$pet = Pet::find($id)) {
+            return redirect()->back();
+        }
+        //$pet = Pet::find($id);
+        if(Storage::exists($pet->fotos)){
+            Storage::delete($pet->fotos);
+        }
 
         $pet->delete();
 
@@ -102,6 +123,7 @@ class PetController extends Controller
 
     public function userPets()
     {
+
         $user = auth()->user();
         $id = $user->id;
 

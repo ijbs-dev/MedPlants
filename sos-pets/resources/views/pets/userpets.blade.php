@@ -148,7 +148,7 @@
                                                                         for="username">
                                                                         Imagem:
                                                                     </label>
-                                                                    <input value="{{ $pet->fotos }}" name="fotos" type="file">
+                                                                    <input name="fotos" type="file">
                                                                     {{-- <button class="bg-blue-400 border-none rounded text-center py-2 px-4"
                                                     type="submit">Cadastrar</button> --}}
                                                                     <br>
