@@ -92,6 +92,7 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
+
         $pet = Pet::find($id);
 
         $pet->delete();
@@ -103,6 +104,7 @@ class PetController extends Controller
     {
         $user = auth()->user();
         $id = $user->id;
+
         $user = User::find($id);
         $userPets = $user->pets()->get();
 
