@@ -41,3 +41,41 @@ php artisan serve
 No terminal 2, rodar o seguinte comando:
 npm run dev
 
+- Procedimento Execução no github
+
+1) Verificar Status 
+        
+        git status  
+        
+2) Idendetifica qual branch está 
+        
+        git branch
+        
+Obs.: Os proximos 2 comandos precisam de cuidado  
+
+Ao identificar que esta na main exexuta para atualizar 
+
+        git pull 
+
+Se não não estiver na main exexuta para redirecionar para main 
+
+        git checkout main  
+
+3) Cria uma nova branch com novo nome 
+
+        git checkout -b NOMENOVABRANCH
+        
+4) Adiciona tudo
+
+        git add . 
+
+5) Faz commit
+
+        git commit -m "mensagem" 
+
+6) Carregar no remoto
+
+        git push -u origin NOMENOVABRANCH 
+
+
+

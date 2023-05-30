@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PetController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
 
@@ -34,8 +36,6 @@ class PetController extends Controller
     public function store(Request $request)
     {
 
-
-
         $data = $request->all();
 
         $data['user_id'] = auth()->user()->id;
@@ -52,7 +52,7 @@ class PetController extends Controller
         $register = Pet::create($data);
 
         //return redirect()->back();
-        return redirect()->route('pets.index')->with('success', 'Pet cadastrado com sucesso!');
+        return redirect()->route('pets.userPets')->with('success', 'Pet cadastrado com sucesso!');
     }
 
     /**
@@ -77,23 +77,56 @@ class PetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pet $pet)
+    public function update(Request $request, $id)
     {
-        //
+        //$data = $request->only('nome', 'idade', 'especie', 'raca', 'porte', 'sexo', 'descricao');
+        if (!$pet = Pet::find($id)) {
+            return redirect()->back();
+        }
+
+        $data = $request->all();
+
+        if ($request->hasFile('fotos')) {
+            if(Storage::exists($pet->fotos)){
+                Storage::delete($pet->fotos);
+            }
+            $caminho_imagem =  $request->fotos->store("pets", "public");
+            $data['fotos'] = $caminho_imagem;
+        }
+
+
+
+        //Pet::where('id', $id)->update($data);
+
+        $pet->update($data);
+
+        return redirect()->route('pets.userPets');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pet $pet)
+    public function destroy($id)
     {
-        //
+        if (!$pet = Pet::find($id)) {
+            return redirect()->back();
+        }
+        //$pet = Pet::find($id);
+        if(Storage::exists($pet->fotos)){
+            Storage::delete($pet->fotos);
+        }
+
+        $pet->delete();
+
+        return redirect()->route('pets.userPets')->with('success', 'Pet excluído com sucesso!');
     }
 
     public function userPets()
     {
+
         $user = auth()->user();
         $id = $user->id;
+
         $user = User::find($id);
         $userPets = $user->pets()->get();
 

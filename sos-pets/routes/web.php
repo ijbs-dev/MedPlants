@@ -15,16 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::delete('/pets/excluir/{id}',[PetController::class,'destroy'])->name('pets.destroy');
 
 Route::get('/', [PetController::class,'index'])->name('pets.index');
-
 Route::get('/pets/create',[PetController::class,'create'])->middleware('auth')->name('pets.create');
-
 Route::post('/pets/store',[PetController::class,'store'])->middleware('auth')->name('pets.store');
-
 Route::get('/pets/{id}',[PetController::class,'show'])->name('pets.show');
-
 Route::get('/meusPets',[PetController::class,'userPets'])->name('pets.userPets');
+
+Route::put('/pets/editar/{id}',[PetController::class,'update'])->name('pets.update');
+
+
+
+
 
 
 Route::get('/dashboard', function () {
