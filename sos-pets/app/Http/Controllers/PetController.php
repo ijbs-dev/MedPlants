@@ -14,7 +14,7 @@ class PetController extends Controller
      * Display a listing of the resource.
      */
 
-    private $pets_show;
+    //private $pet;
 
     public function index()
     {
@@ -66,7 +66,7 @@ class PetController extends Controller
         if (!$pet = Pet::find($id)) {
             return redirect()->route('pets.index');
         }
-        $this->pets_show = Pet::find($id);
+        //$this->pets_show = Pet::find($id);
         return view('pets.show', compact('pet'));
     }
 
@@ -139,12 +139,12 @@ class PetController extends Controller
 
     public function adotar(Request $request)
     {
-        $user = auth()->user();
-        $id = $user->id;
+        $data = $request->all();
+
+        $id = $data['pet_id'];
 
         $pet = Pet::find($id);
 
-        $data = $request->all();
         $register = Adopt::create($data);
 
         //return redirect()->back();
