@@ -62,7 +62,7 @@
                                                             class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-gray-900 bg-opacity-50">
                                                             <div
                                                                 class="bg-gray-400 p-6 rounded-lg flex flex-col items-center">
-<form action="{{ route('pets.update',$pet->id) }}" method="post" enctype="multipart/form-data"
+                                                                <form action="{{ route('pets.update',$pet->id) }}" method="post" enctype="multipart/form-data"
                                                                     class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                                                                     @csrf
                                                                     @method('PUT')
