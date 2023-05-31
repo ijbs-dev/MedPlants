@@ -27,6 +27,7 @@
                                     <th class="border border-gray-400 bg-yellow-100 px-4 py-2">Porte</th>
                                     <th class="border border-gray-400 bg-yellow-100 px-4 py-2">Sexo</th>
                                     <th class="border border-gray-400 bg-yellow-100 px-4 py-2">Descrição</th>
+                                    <th class="border border-gray-400 bg-yellow-100 px-4 py-2">Status</th>
                                     <th class="border border-gray-400 bg-yellow-100 px-4 py-2">Ações</th>
                                 </tr>
                             </thead>
@@ -40,6 +41,7 @@
                                         <td class="border border-gray-400 px-4 py-2">{{ $pet->porte }}</td>
                                         <td class="border border-gray-400 px-4 py-2">{{ $pet->sexo }}</td>
                                         <td class="border border-gray-400 px-4 py-2">{{ $pet->descricao }}</td>
+                                        <td class="border border-gray-400 px-4 py-2">{{ $pet->status }}</td>
                                         <td class="border border-gray-400 px-4 py-2">
                                             <div x-data="{ showDelete: false, showEdit: false }">
                                                 <div class="flex gap-2">

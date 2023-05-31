@@ -27,8 +27,18 @@
         </ul>
 
         <!-- Botão -->
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Adotar</button>
-      </div>
+        @php
+          $dataAtual = new DateTime();
+            $dataFormatada = $dataAtual->format('Y-m-d');
+        @endphp
+        <form action="{{route('pets.adotar')}}" method="POST">
+            @csrf
+            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                <input type="hidden" name="pet_id" value="{{$pet->id}}">
+                    <input type="hidden" name="adoption_date" value="{{$dataFormatada}}">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Agendar</button>
+            </form>
+        </div>
     </div>
   </section>
 
