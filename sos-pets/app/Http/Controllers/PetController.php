@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use App\Models\Adopt;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +13,8 @@ class PetController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    private $pets_show;
 
     public function index()
     {
@@ -63,6 +66,7 @@ class PetController extends Controller
         if (!$pet = Pet::find($id)) {
             return redirect()->route('pets.index');
         }
+        $this->pets_show = Pet::find($id);
         return view('pets.show', compact('pet'));
     }
 
@@ -131,5 +135,20 @@ class PetController extends Controller
         $userPets = $user->pets()->get();
 
         return view('pets.userpets', compact('userPets'));
+    }
+
+    public function adotar(Request $request)
+    {
+        $user = auth()->user();
+        $id = $user->id;
+
+        $pet = Pet::find($id);
+
+        $data = $request->all();
+        $register = Adopt::create($data);
+
+        //return redirect()->back();
+        //return redirect()->route('pets.show')->with('success', 'Agendado com sucesso!');
+        return view('pets.show', compact('pet'));
     }
 }
