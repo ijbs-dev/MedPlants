@@ -7,6 +7,7 @@ use App\Models\Adopt;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class PetController extends Controller
 {
@@ -146,9 +147,12 @@ class PetController extends Controller
         $pet = Pet::find($id);
 
         $register = Adopt::create($data);
-
+        DB::table('pets')
+        ->where('id', $id)
+        ->update(['status' => 'aguardando']);
         //return redirect()->back();
-        //return redirect()->route('pets.show')->with('success', 'Agendado com sucesso!');
-        return view('pets.show', compact('pet'));
+        //return redirect()->route('pets.show', compact('pet'))->with('success', 'Pet excluído com sucesso!');
+        $mensagem="Agendamento realizado com sucesso!";
+        return view('pets.show', compact('pet','mensagem'));
     }
 }
