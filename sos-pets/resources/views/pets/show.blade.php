@@ -43,7 +43,9 @@
         @endphp
         <form action="{{route('pets.adotar')}}" method="POST">
             @csrf
-            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+            @if (isset(Auth::user()->id))
+                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+            @endif
                 <input type="hidden" name="pet_id" value="{{$pet->id}}">
                     <input type="hidden" name="adoption_date" value="{{$dataFormatada}}">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Agendar</button>
