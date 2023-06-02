@@ -22,7 +22,7 @@ Configurar as variáveis de anbiente do arquivo .env com o nome do Banco de Dado
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nome_do_bendo
+DB_DATABASE=nome_do_banco
 DB_USERNAME=usuário
 DB_PASSWORD=senha
 
