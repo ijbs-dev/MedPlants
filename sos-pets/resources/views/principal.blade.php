@@ -10,6 +10,8 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+
+
     <!-- <title>@yield('titulo')</title> -->
 </head>
 <body class="bg-color-primary text-color-white tracking-wider">
@@ -20,7 +22,10 @@
     <div class="container mx-auto">
 
         @yield('conteudo')
-        
+
+
+
+
     </div>
 
 

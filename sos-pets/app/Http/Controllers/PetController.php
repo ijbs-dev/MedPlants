@@ -46,11 +46,13 @@ class PetController extends Controller
 
         $id = $data['user_id'];
 
+
         //checa se a imagem veio na requisição e se houve erro no upload
         if ($request->hasFile('fotos') || $request->fotos->isValid()) {
             $caminho_imagem =  $request->fotos->store("pets", "public");
         }
         $data['fotos'] = $caminho_imagem;
+
 
 
         $register = Pet::create($data);
@@ -74,9 +76,9 @@ class PetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pet $pet)
+    public function edit(string $id)
     {
-        //
+        return view('pets.edit',compact('id'));
     }
 
     /**
@@ -134,6 +136,7 @@ class PetController extends Controller
 
         $user = User::find($id);
         $userPets = $user->pets()->get();
+
 
         return view('pets.userpets', compact('userPets'));
     }
