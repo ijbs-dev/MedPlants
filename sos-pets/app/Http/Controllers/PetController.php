@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pet;
 use App\Models\Adopt;
 use App\Models\User;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -30,8 +31,8 @@ class PetController extends Controller
      */
     public function create()
     {
-
-        return view('pets.create');
+        $types = Type::all();
+        return view('pets.create',compact('types'));
     }
 
     /**
@@ -78,7 +79,10 @@ class PetController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pets.edit',compact('id'));
+        if (!$pet = Pet::find($id)) {
+            return redirect()->route('pets.userPets');
+        }
+        return view('pets.edit',compact('pet'));
     }
 
     /**
