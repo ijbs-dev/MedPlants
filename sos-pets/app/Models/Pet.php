@@ -12,11 +12,11 @@ class Pet extends Model
     protected $fillable = [
         'nome',
         'user_id',
+        'port_id',
+        'type_id',
+        'sex_id',
         'idade',
-        'especie',
         'raca',
-        'porte',
-        'sexo',
         'descricao',
         'fotos'
     ];
@@ -27,5 +27,17 @@ class Pet extends Model
 
     public function adopts() {
         return $this->hasMany(Adopt::class);
+    }
+
+    public function type() {
+        return $this->hasOne(Type::class);
+    }
+
+    public function port() {
+        return $this->hasOne(Port::class);
+    }
+
+    public function sex() {
+        return $this->hasOne(Sex::class);
     }
 }

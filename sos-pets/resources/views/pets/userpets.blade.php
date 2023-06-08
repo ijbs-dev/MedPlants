@@ -73,21 +73,38 @@
                                     </div>
                                 </div>
                             </td>
+
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">{{$pet->especie}}</p>
+                                @if($pet->type_id == 1)
+                                <p class="text-gray-900 whitespace-no-wrap">Cachorro</p>
+                                @else
+                                <p class="text-gray-900 whitespace-no-wrap">Gato</p>
+                                @endif
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <p class="text-gray-900 whitespace-no-wrap">{{$pet->raca}}</p>
                             </td>
+
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">{{$pet->porte}}</p>
+                                @if($pet->port_id == 1)
+                                <p class="text-gray-900 whitespace-no-wrap">Pequeno</p>
+                                @elseif($pet->port_id == 2)
+                                <p class="text-gray-900 whitespace-no-wrap">Médio</p>
+                                @else
+                                <p class="text-gray-900 whitespace-no-wrap">Grande</p>
+                                @endif
                             </td>
+
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <p class="text-gray-900 whitespace-no-wrap">{{$pet->idade}}</p>
                             </td>
 
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">{{$pet->sexo}}</p>
+                                @if($pet->sex_id == 1)
+                                <p class="text-gray-900 whitespace-no-wrap">Macho</p>
+                                @else
+                                <p class="text-gray-900 whitespace-no-wrap">Femêa</p>
+                                @endif
                             </td>
 
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">

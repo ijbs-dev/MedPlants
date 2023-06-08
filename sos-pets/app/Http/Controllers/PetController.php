@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pet;
 use App\Models\Adopt;
+use App\Models\Port;
+use App\Models\Sex;
 use App\Models\User;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -21,9 +23,9 @@ class PetController extends Controller
     public function index()
     {
 
-        $pets = Pet::all();
+        $pets = Pet::all()->reverse();
 
-        return view('pets.index', ['pets' => $pets]);
+        return view('pets.index',compact('pets'));
     }
 
     /**
@@ -32,7 +34,9 @@ class PetController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('pets.create',compact('types'));
+        $ports = Port::all();
+        $sexes = Sex::all();
+        return view('pets.create',compact('types','ports','sexes'));
     }
 
     /**
@@ -47,19 +51,16 @@ class PetController extends Controller
 
         $id = $data['user_id'];
 
-
         //checa se a imagem veio na requisição e se houve erro no upload
         if ($request->hasFile('fotos') || $request->fotos->isValid()) {
             $caminho_imagem =  $request->fotos->store("pets", "public");
         }
         $data['fotos'] = $caminho_imagem;
 
-
-
         $register = Pet::create($data);
 
-        //return redirect()->back();
         return redirect()->route('pets.userPets')->with('success', 'Pet cadastrado com sucesso!');
+
     }
 
     /**
@@ -139,7 +140,7 @@ class PetController extends Controller
         $id = $user->id;
 
         $user = User::find($id);
-        $userPets = $user->pets()->get();
+        $userPets = $user->pets()->latest()->get();
 
 
         return view('pets.userpets', compact('userPets'));

@@ -42,8 +42,8 @@
             </option>
         @endforeach
    </select> --}}
-   <select name="type_id">
-    <option value="">Selecione o tipo</option>
+   <select name="type_id" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+    <option disabled selected>Selecione o tipo</option>
     @foreach ($types as $type)
         <option value="{{ $type->id }}">{{ $type->tipo }}</option>
     @endforeach
@@ -59,21 +59,22 @@
     <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
         Porte:
       </label>
-    <select name="porte" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-        <option disabled selected>Porte</option>
-        <option value="Pequeno">Pequeno</option>
-        <option value="Médio">Médio</option>
-        <option value="Grande">Grande</option>
+    <select name="port_id" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+        <option disabled selected>Selecione o porte</option>
+        @foreach ($ports as $port)
+            <option value="{{ $port->id }}">{{ $port->porte }}</option>
+        @endforeach
     </select>
     </div>
     <div class="inline-block relative w-64" name="especie">
     <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
         Sexo:
       </label>
-    <select name="sexo" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-    <option disabled selected>Sexo</option>
-        <option value="Macho">Macho</option>
-        <option value="Fêmea">Fêmea</option>
+    <select name="sex_id" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+    <option disabled selected>Selecione o sexo</option>
+    @foreach ($sexes as $sex)
+        <option value="{{ $sex->id }}">{{ $sex->sexo }}</option>
+    @endforeach
     </select>
     </div>
     <div class="form-group">
