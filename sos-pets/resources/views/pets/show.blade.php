@@ -32,9 +32,6 @@
           <li class="text-gray-700"><span class="text-base font-bold">Idade:</span> {{ $pet->idade }}</li>
           <li class="text-gray-700"><span class="text-base font-bold">Raça:</span> {{ $pet->raca }}</li>
           <li class="text-gray-700"><span class="text-base font-bold">Porte:</span>
-            @foreach ($types as $type)
-              {{ $type->tipo }}
-            @endforeach
          </li>
           <li class="text-gray-700"><span class="text-base font-bold">Sexo:</span> {{ $pet->sex_id }}</li>
           <li class="text-gray-700"><span class="text-base font-bold">Descrição:</span> {{ $pet->descricao }}</li>
