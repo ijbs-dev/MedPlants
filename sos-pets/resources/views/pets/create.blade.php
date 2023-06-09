@@ -47,7 +47,7 @@
     @foreach ($types as $type)
         <option value="{{ $type->id }}">{{ $type->tipo }}</option>
     @endforeach
-</select>
+   </select>
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2">

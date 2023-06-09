@@ -71,8 +71,9 @@ class PetController extends Controller
         if (!$pet = Pet::find($id)) {
             return redirect()->route('pets.index');
         }
+        $types = Type::all();
         //$this->pets_show = Pet::find($id);
-        return view('pets.show', compact('pet'));
+        return view('pets.show', compact('pet','types'));
     }
 
     /**
@@ -83,7 +84,12 @@ class PetController extends Controller
         if (!$pet = Pet::find($id)) {
             return redirect()->route('pets.userPets');
         }
-        return view('pets.edit',compact('pet'));
+        //$types = Type::find($pet->type_id);
+        $types = Type::where('id', $pet->type_id)->first();
+        $ports = Port::find($pet->port_id);
+        $sexes = Sex::find($pet->sex_id);
+
+        return view('pets.edit',compact('pet','types','ports','sexes'));
     }
 
     /**
