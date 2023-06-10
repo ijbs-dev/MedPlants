@@ -16,7 +16,7 @@ class Pet extends Model
         'type_id',
         'sex_id',
         'idade',
-        'raca',
+        /* 'raca', */
         'descricao',
         'fotos'
     ];

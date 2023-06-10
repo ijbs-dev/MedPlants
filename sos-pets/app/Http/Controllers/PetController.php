@@ -57,7 +57,7 @@ class PetController extends Controller
         }
         $data['fotos'] = $caminho_imagem;
 
-        $register = Pet::create($data);
+        //$register = Pet::create($data);
 
         return redirect()->route('pets.userPets')->with('success', 'Pet cadastrado com sucesso!');
 
@@ -172,7 +172,7 @@ class PetController extends Controller
 
     public function agendamento(){
 
-        
+
 
         return view('pets.agendamentos');
     }

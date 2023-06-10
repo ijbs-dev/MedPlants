@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('idade');
             $table->string('especie');
-            $table->string('raca');
+            //$table->string('raca');
             $table->text('descricao');
             $table->string('fotos');
             $table->float('valor', 8, 2)->nullable();
