@@ -6,8 +6,11 @@
 
 
     @php
-    $user = auth()->user();
+    $id = 0;
+      if (isset(Auth::user()->id)) {
+        $user = auth()->user();
         $id = $user->id;
+      }
     @endphp
 
 @if (isset($mensagem))
@@ -61,11 +64,13 @@
     </div>
   </section>
 
-  <script>
+  @if ($id)
+    <script>
+        let userIdLogado = "{{ $id }}";
+        // Outro código JavaScript usando userIdLogado
     function interromper() {
       // Obtém os valores dos campos do formulário
       let userPetId = "{{ $pet->user_id }}";
-      let userIdLogado = "{{ $id }}";
 
       console.log(userPetId,userIdLogado);
 
@@ -79,5 +84,5 @@
       return true;
     }
     </script>
-
+  @endif
 @endsection
