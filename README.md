@@ -77,5 +77,102 @@ Se não não estiver na main exexuta para redirecionar para main
 
         git push -u origin NOMENOVABRANCH 
 
+===========================================================
+
+Aqui está a sequência organizada de comandos com algumas adições/modificações para atender às suas solicitações:
+
+1. Criação de uma nova branch chamada "Ajustes":
+```
+git branch Ajustes
+```
+
+2. Sair da branch atual (main):
+```
+git checkout -
+```
+
+3. Mudar para a branch "Ajustes":
+```
+git checkout Ajustes
+```
+
+4. Renomear a branch "Ajustes" para "NovosAjustes":
+```
+git branch -m Ajustes NovosAjustes
+```
+
+5. Atualizar a branch "NovosAjustes" a partir da branch "main":
+```
+git merge main NovosAjustes
+```
+ou
+```
+git checkout NovosAjustes
+git merge main
+```
+
+6. Apagar a branch "NovosAjustes":
+```
+git branch -d NovosAjustes
+```
+
+7. Dar git pull em uma branch específica sem precisar sair dela:
+```
+git pull origin NOME_BRANCH
+```
+Substitua "NOME_BRANCH" pelo nome da branch específica em que você deseja dar o pull.
+
+8. Adicionar o arquivo README.md:
+```
+echo "# Project-Java" >> README.md
+```
+
+9. Iniciar o repositório Git:
+```
+git init
+```
+
+10. Configurar o email do usuário:
+```
+git config --global user.email "smaeljbs@gmail.com"
+```
+
+11. Configurar o nome do usuário:
+```
+git config --global user.name ijbs
+```
+
+12. Adicionar um arquivo específico:
+```
+git add NOMEARQUIVO
+```
+Substitua "NOMEARQUIVO" pelo nome do arquivo que você deseja adicionar.
+
+13. Adicionar todos os arquivos modificados:
+```
+git add .
+```
+
+14. Fazer o primeiro commit:
+```
+git commit -m "first commit"
+```
+
+15. Renomear a branch "main" para "main_antiga" (opcional, caso você queira renomear a branch):
+```
+git branch -m main main_antiga
+```
+
+16. Adicionar o repositório remoto:
+```
+git remote add origin https://github.com/ijbs-dev/Project-Java.git
+```
+
+17. Fazer o push inicial para o repositório remoto:
+```
+git push -u origin main
+```
+
+Por favor, lembre-se de adaptar os comandos de acordo com suas necessidades específicas.
 
 
