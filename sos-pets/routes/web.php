@@ -27,6 +27,11 @@ Route::get('/meusPets',[PetController::class,'userPets'])->name('pets.userPets')
 Route::put('/pets/editar/{id}',[PetController::class,'update'])->name('pets.update');
 Route::post('/pets/adotar',[PetController::class,'adotar'])->middleware('auth')->name('pets.adotar');
 
+Route::get('/agendamentos',[PetController::class,'agendamento'])->name('pets.agendamentos');
+
+
+
+
 
 
 

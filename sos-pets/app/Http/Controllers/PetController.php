@@ -169,4 +169,11 @@ class PetController extends Controller
         $mensagem="Agendamento realizado com sucesso!";
         return view('pets.show', compact('pet','mensagem'));
     }
+
+    public function agendamento(){
+
+        
+
+        return view('pets.agendamentos');
+    }
 }
