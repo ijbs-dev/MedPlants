@@ -56,12 +56,12 @@ git init
 
 3. Configurar o email do usuário:
 ```
-git config --global user.email "smaeljbs@gmail.com"
+git config --global user.email "nome@email.com"
 ```
 
 4. Configurar o nome do usuário:
 ```
-git config --global user.name ijbs
+git config --global user.name nomePessoa
 ```
 
 5. Criação de uma nova branch chamada "Ajustes":
@@ -144,7 +144,7 @@ git branch -m main main_antiga
 
 19. Adicionar o repositório remoto:
 ```
-git remote add origin https://github.com/ijbs-dev/Project-Java.git
+git remote add origin https://github.com/ijbs-dev/SosPet.git
 ```
 
 20. Fazer o push inicial para o repositório remoto:
