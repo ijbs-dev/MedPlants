@@ -172,6 +172,8 @@ git remote add origin https://github.com/ijbs-dev/Project-Java.git
 ```
 git push -u origin main
 ```
+18. Comando para resolver conflitos de git pull, quando vem tudo no remoto
+git pull --rebase --autostash
 
 Por favor, lembre-se de adaptar os comandos de acordo com suas necessidades específicas.
 
