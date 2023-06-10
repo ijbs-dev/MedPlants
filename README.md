@@ -42,7 +42,7 @@ No terminal 2, rodar o seguinte comando:
 npm run dev
 
 
-## Procedimento Execução no github
+## Procedimentos execução no github
 
 1. Adicionar o arquivo README.md:
 ```
@@ -79,7 +79,7 @@ git status
 git branch
 ```        
 
-- Obs.: Os proximos 2 comandos precisam de cuidado  
+### Obs.: Os proximos 2 comandos precisam de cuidado  
 8. Ao identificar que esta na main executa para atualizar 
 ```
 git pull 
