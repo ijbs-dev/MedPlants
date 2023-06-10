@@ -5,6 +5,11 @@
 @section('conteudo')
 
 
+    @php
+    $user = auth()->user();
+        $id = $user->id;
+    @endphp
+
 @if (isset($mensagem))
 <div class="flex p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor"
@@ -43,7 +48,7 @@
           $dataAtual = new DateTime();
             $dataFormatada = $dataAtual->format('Y-m-d');
         @endphp
-        <form action="{{route('pets.adotar')}}" method="POST">
+        <form onsubmit="return interromper()" action="{{route('pets.adotar')}}" method="POST">
             @csrf
             @if (isset(Auth::user()->id))
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
@@ -55,5 +60,24 @@
         </div>
     </div>
   </section>
+
+  <script>
+    function interromper() {
+      // Obtém os valores dos campos do formulário
+      let userPetId = "{{ $pet->user_id }}";
+      let userIdLogado = "{{ $id }}";
+
+      console.log(userPetId,userIdLogado);
+
+      // Compara os valores
+      if (userPetId === userIdLogado) {
+        alert("Voçê não pode agendar que foi cadastrado por voçê.");
+        return false; // Retorna falso para interromper o envio do formulário
+      }
+
+      // Caso contrário, o envio do formulário prossegue
+      return true;
+    }
+    </script>
 
 @endsection
