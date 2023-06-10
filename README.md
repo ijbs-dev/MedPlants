@@ -42,7 +42,7 @@ No terminal 2, rodar o seguinte comando:
 npm run dev
 
 
-- Procedimento Execução no github
+## Procedimento Execução no github
 
 1. Adicionar o arquivo README.md:
 ```
