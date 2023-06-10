@@ -41,67 +41,66 @@ php artisan serve
 No terminal 2, rodar o seguinte comando:
 npm run dev
 
+
 - Procedimento Execução no github
 
-1) Verificar Status 
-        
-        git status  
-        
-2) Idendetifica qual branch está 
-        
-        git branch
-        
-Obs.: Os proximos 2 comandos precisam de cuidado  
+1. Adicionar o arquivo README.md:
+```
+echo "# Project-Java" >> README.md
+```
 
-Ao identificar que esta na main exexuta para atualizar 
+2. Iniciar o repositório Git:
+```
+git init
+```
 
-        git pull 
+3. Configurar o email do usuário:
+```
+git config --global user.email "smaeljbs@gmail.com"
+```
 
-Se não não estiver na main exexuta para redirecionar para main 
+4. Configurar o nome do usuário:
+```
+git config --global user.name ijbs
+```
 
-        git checkout main  
-
-3) Cria uma nova branch com novo nome 
-
-        git checkout -b NOMENOVABRANCH
-        
-4) Adiciona tudo
-
-        git add . 
-
-5) Faz commit
-
-        git commit -m "mensagem" 
-
-6) Carregar no remoto
-
-        git push -u origin NOMENOVABRANCH 
-
-===========================================================
-
-Aqui está a sequência organizada de comandos com algumas adições/modificações para atender às suas solicitações:
-
-1. Criação de uma nova branch chamada "Ajustes":
+5. Criação de uma nova branch chamada "Ajustes":
 ```
 git branch Ajustes
 ```
 
-2. Sair da branch atual (main):
+6. Verificar Status 
+```        
+git status  
+```        
+
+7. Idendetifica qual branch está 
+```        
+git branch
+```        
+
+- Obs.: Os proximos 2 comandos precisam de cuidado  
+8. Ao identificar que esta na main executa para atualizar 
 ```
-git checkout -
+git pull 
 ```
 
-3. Mudar para a branch "Ajustes":
+9. Se não não estiver na main executa para redirecionar para main 
+```
+git checkout main  
+```
+
+10. Mudar para a branch "Ajustes":
 ```
 git checkout Ajustes
 ```
 
-4. Renomear a branch "Ajustes" para "NovosAjustes":
+11. Renomear a branch "Ajustes" para "NovosAjustes":
 ```
 git branch -m Ajustes NovosAjustes
 ```
 
-5. Atualizar a branch "NovosAjustes" a partir da branch "main":
+12. Atualizar a branch "NovosAjustes" a partir da branch "main":
 ```
 git merge main NovosAjustes
 ```
@@ -111,71 +110,44 @@ git checkout NovosAjustes
 git merge main
 ```
 
-6. Apagar a branch "NovosAjustes":
+13. Apagar a branch "NovosAjustes":
 ```
 git branch -d NovosAjustes
 ```
 
-7. Dar git pull em uma branch específica sem precisar sair dela:
+14. Dar git pull em uma branch específica sem precisar sair dela:
 ```
 git pull origin NOME_BRANCH
 ```
 Substitua "NOME_BRANCH" pelo nome da branch específica em que você deseja dar o pull.
 
-8. Adicionar o arquivo README.md:
-```
-echo "# Project-Java" >> README.md
-```
-
-9. Iniciar o repositório Git:
-```
-git init
-```
-
-10. Configurar o email do usuário:
-```
-git config --global user.email "smaeljbs@gmail.com"
-```
-
-11. Configurar o nome do usuário:
-```
-git config --global user.name ijbs
-```
-
-12. Adicionar um arquivo específico:
+15. Adicionar um arquivo específico:
 ```
 git add NOMEARQUIVO
 ```
 Substitua "NOMEARQUIVO" pelo nome do arquivo que você deseja adicionar.
 
-13. Adicionar todos os arquivos modificados:
+16. Adicionar todos os arquivos modificados:
 ```
 git add .
 ```
 
-14. Fazer o primeiro commit:
+17. Fazer o primeiro commit:
 ```
 git commit -m "first commit"
 ```
 
-15. Renomear a branch "main" para "main_antiga" (opcional, caso você queira renomear a branch):
+18. Renomear a branch "main" para "main_antiga" (opcional, caso você queira renomear a branch):
 ```
 git branch -m main main_antiga
 ```
 
-16. Adicionar o repositório remoto:
+19. Adicionar o repositório remoto:
 ```
 git remote add origin https://github.com/ijbs-dev/Project-Java.git
 ```
 
-17. Fazer o push inicial para o repositório remoto:
+20. Fazer o push inicial para o repositório remoto:
 ```
-git push -u origin main
+git push -u origin NOMENOVABRANCH 
 ```
-18. Comando para resolver conflitos de git pull, quando vem tudo no remoto:
-```
-git pull --rebase --autostash
-```
-Por favor, lembre-se de adaptar os comandos de acordo com suas necessidades específicas.
-
-
