@@ -71,7 +71,7 @@
 
       // Compara os valores
       if (userPetId === userIdLogado) {
-        alert("Voçê não pode agendar que foi cadastrado por voçê.");
+        alert("Voçê não pode agendar que foi cadastrado por voçê, por favor escolha outro.");
         return false; // Retorna falso para interromper o envio do formulário
       }
 
