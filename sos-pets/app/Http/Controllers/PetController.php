@@ -11,6 +11,7 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PetController extends Controller
 {
@@ -112,10 +113,7 @@ class PetController extends Controller
             $data['fotos'] = $caminho_imagem;
         }
 
-
-
         //Pet::where('id', $id)->update($data);
-
         $pet->update($data);
 
         return redirect()->route('pets.userPets');
@@ -148,7 +146,6 @@ class PetController extends Controller
         $user = User::find($id);
         $userPets = $user->pets()->latest()->get();
 
-
         return view('pets.userpets', compact('userPets'));
     }
 
@@ -172,8 +169,24 @@ class PetController extends Controller
 
     public function agendamento(){
 
-        
+        $userId = Auth::id();
 
-        return view('pets.agendamentos');
+        $agendaUsers = Adopt::with('user')
+            ->where('user_id', $userId)
+            ->get()
+            ->reverse();
+
+        $agendaPets = Adopt::with('pet')
+            ->where('user_id', $userId)
+            ->get()
+            ->reverse();
+
+        $agendaData = [
+            'users' => $agendaUsers,
+            'pets' => $agendaPets,
+        ];
+
+
+        return view('pets.agendamentos', compact('agendaData'));
     }
 }

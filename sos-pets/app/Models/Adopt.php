@@ -19,7 +19,7 @@ class Adopt extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pets() {
+    public function pet() {
         return $this->belongsTo(Pet::class);
     }
 }
