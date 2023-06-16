@@ -85,8 +85,7 @@ class PetController extends Controller
         if (!$pet = Pet::find($id)) {
             return redirect()->route('pets.userPets');
         }
-        //$types = Type::find($pet->type_id);
-        $types = Type::where('id', $pet->type_id)->first();
+        $types = Type::find($pet->type_id);
         $ports = Port::find($pet->port_id);
         $sexes = Sex::find($pet->sex_id);
 
