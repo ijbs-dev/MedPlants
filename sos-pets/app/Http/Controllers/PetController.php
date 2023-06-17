@@ -103,7 +103,7 @@ class PetController extends Controller
         }
 
         $data = $request->all();
-
+        
         if ($request->hasFile('fotos')) {
             if(Storage::exists($pet->fotos)){
                 Storage::delete($pet->fotos);

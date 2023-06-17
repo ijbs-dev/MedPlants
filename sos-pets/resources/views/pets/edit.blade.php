@@ -1,89 +1,141 @@
 
 @extends('principal')
 
-@section('titulo', 'Cadastro')
+@section('titulo', 'Editar')
 
 @section('conteudo')
 
 
-<h1 style="font-size: 30px; font-weight: bold;">Editar</h1>
+  <div class="min-h-screen bg-gray-100 p-0 sm:p-12">
+    <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
+      <h1 class="text-2xl font-bold mb-8">Editar Pet</h1>
+      <form action="{{ route('pets.update',$pet->id) }}" method="post" enctype="multipart/form-data" novalidate>
+        @csrf
+        @method('PUT')
+        <div class="relative z-0 w-full mb-5">
+          <input
+          value="{{$pet->nome}}"
+            type="text"
+            name="nome"
+            placeholder=" "
+            required
+            class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+          />
+          <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Nome:</label>
+          <span class="text-sm text-red-600 hidden" id="error">Nome</span>
+        </div>
 
-<div class="w-full max-w-xs">
-  <form action="{{ route('pets.update',$pet->id) }}" method="post" enctype="multipart/form-data"
-  class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-  @method('PUT')
-  @csrf
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">
-        Nome:
-      </label>
-      <input value="{{$pet->nome}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="nome" placeholder="Nome">
-    </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">
-        Idade:
-      </label>
-      <input value="{{$pet->idade}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="idade" placeholder="Idade">
-    </div>
-    <div name="especie"class="inline-block relative w-64">
-    <label class="block text-gray-700 text-sm font-bold mb-2">
-        Tipo:
-      </label>
+        <div class="relative z-0 w-full mb-5">
+          <input
+            value="{{$pet->idade}}"
+            type="text"
+            name="idade"
+            placeholder=" "
+            class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+          />
+          <label for="email" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Idade:</label>
+          <span class="text-sm text-red-600 hidden" id="error">Idade</span>
+        </div>
 
-    {{-- <select name="type_id">
-        <option>Selecione um Tipo</option>
-     @if ($types instanceof Illuminate\Database\Eloquent\Collection)
-        @foreach($types as $type)
-           <option value="{{ $type->id }}" {{ $pet->type_id == $type->id ? 'selected' : '' }} >{{ $type->tipo }}</option>
-        @endforeach
-     @endif
-    </select> --}}
-    <select name="type_id" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-        <option disabled selected>Tipo</option>
+          <select name="type_id"
+            value=""
+            onclick="this.setAttribute('value', this.value);"
+            class="pt-3 text-gray-500 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+            <option disabled selected class="text-gray-400">Selecione o tipo:</option>
+            <option value="1">Cachorro</option>
+            <option value="2">Gato</option>
+        </select>
+
+          <div class="relative z-0 w-full mb-5">
+            <input
+              value="{{$pet->raca}}"
+              type="text"
+              name="raca"
+              placeholder=" "
+              class="pt-3 pb-2 block w-full px-0 mt-6 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+            />
+            <label for="email" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Raça:</label>
+            <span class="text-sm text-red-600 hidden" id="error">Raça</span>
+          </div>
+
+          <select name="port_id"
+          value=""
+          onclick="this.setAttribute('value', this.value);"
+          class="pt-3 text-gray-500 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+        >
+        <option disabled selected class="text-gray-400">Selecione o Porte:</option>
+        <option value="1">Pequeno</option>
+        <option value="2">Médio</option>
+        <option value="3">Grande</option>
+        </select>
+
+          <select name="sex_id"
+          value=""
+          onclick="this.setAttribute('value', this.value);"
+          class="pt-3 text-gray-500 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+        >
+        <option disabled selected class="text-gray-400">Selecione o Sexo:</option>
         <option value="1">Macho</option>
         <option value="2">Fêmea</option>
-    </select>
+        <select>
 
+          <div class="relative z-0 w-full mb-5">
+            <input
+              type="text"
+              name="date"
+              placeholder=" "
+              onclick="this.setAttribute('type', 'date');"
+              class="pt-3 pb-2 block w-full px-0 mt-6 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+            />
+            <label for="date" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Data:</label>
+            <span class="text-sm text-red-600 hidden" id="error">Date is required</span>
+          </div>
+
+          <div class="flex flex-col mb-3">
+            <label class="text-gray-500"  for="message">Descrição:</label>
+            <textarea
+                name="descricao"
+                rows="4" id="message"
+                class="px-3 py-2 focus:outline-none"
+            >{{$pet->descricao}}</textarea>
+            </div>
+
+            <div class="relative z-0 w-full mb-5">
+            <label class="block mb-2 text-sm font-medium text-gray-500" for="small_size">Imagem:</label>
+                 <input class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="fotos" type="file">
+            </div>
+        <button
+          type="submit"
+          class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-400 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
+        >
+          Cadastrar
+        </button>
+      </form>
     </div>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2">
-        Raça:
-      </label>
-      <input value="{{$pet->raca}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="raca" placeholder="Raça">
-    </div>
-    <div class="inline-block relative w-64" name="especie">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Porte:
-      </label>
-    <select name="porte" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-        <option disabled selected>Porte</option>
-        <option value="Pequeno">Pequeno</option>
-        <option value="Médio">Médio</option>
-        <option value="Grande">Grande</option>
-    </select>
-    </div>
-    <div class="inline-block relative w-64" name="especie">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Sexo:
-      </label>
-    <select name="sexo" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-    <option disabled selected>Sexo</option>
-        <option value="Macho">Macho</option>
-        <option value="Fêmea">Fêmea</option>
-    </select>
-    </div>
-    <div class="form-group">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Descrição:
-      </label>
-        <textarea class="form-control" name="descricao" id="" cols="21"  rows="3">{{$pet->descricao}}</textarea>
-    </div>
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Imagem:
-      </label>
-      <input name="fotos" type="file">
-    <button class="bg-blue-400 border-none rounded text-center py-2 px-4" type="submit">Cadastrar</button>
-  </form>
-</div>
+  </div>
+
+  <script>
+    'use strict'
+
+    document.getElementById('button').addEventListener('click', toggleError)
+    const errMessages = document.querySelectorAll('#error')
+
+    function toggleError() {
+      // Show error message
+      errMessages.forEach((el) => {
+        el.classList.toggle('hidden')
+      })
+
+      // Highlight input and label with red
+      const allBorders = document.querySelectorAll('.border-gray-200')
+      const allTexts = document.querySelectorAll('.text-gray-500')
+      allBorders.forEach((el) => {
+        el.classList.toggle('border-red-600')
+      })
+      allTexts.forEach((el) => {
+        el.classList.toggle('text-red-600')
+      })
+    }
+  </script>
 
 @endsection
