@@ -1,4 +1,4 @@
-<footer class="bg-white">
+<!-- <footer class="bg-white">
     <div class="mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8 lg:pt-24">
       {{-- <div class="text-center">
         <h2 class="text-3xl font-extrabold text-gray-900 sm:text-5xl">
@@ -162,4 +162,15 @@
         </ul>
       </div>
     </div>
-  </footer>
+  </footer> -->
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+       
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+   <script src="{{ asset('js/scripts.js') }}"></script>
+
+
+ 

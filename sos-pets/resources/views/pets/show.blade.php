@@ -6,7 +6,7 @@
 
 
     @php
-    $id = 0;
+    {{ $id = 0;
       if (isset(Auth::user()->id)) {
         $user = auth()->user();
         $id = $user->id;
