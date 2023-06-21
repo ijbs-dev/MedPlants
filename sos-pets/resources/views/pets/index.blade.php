@@ -119,7 +119,7 @@
                                           @endif
                                               <input type="hidden" name="pet_id" value="{{$pet->id}}">
                                                   <input type="hidden" name="adoption_date" value="{{$dataFormatada}}">
-                                              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Agendar</button>
+                                              <!--<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Agendar</button>-->
 
                                             <button type="submit" class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal">
                                                 <!--<i class="fas fa-xmark me-1"></i> -->
@@ -135,7 +135,7 @@
         </div>
         @endforeach
 
-      
+
 
 
 
