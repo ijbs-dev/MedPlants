@@ -116,6 +116,28 @@
     color: #ffc800;
   }
 
+  .sair{
+    color:#ffffff;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 15.2px;
+    padding:8px 24px;
+    margin-top: 50px;
+  }
+
+   .user{
+    color:#ffffff;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 15.2px;
+    padding:8px 40px;
+    background-color: #ffc800;
+  }
+
+  .user:hover{
+    background-color: #ffc800;
+  }
+
 </style>
 
 
@@ -138,20 +160,20 @@
                         <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
 
                       @auth
-                       <x-dropdown-link :href="route('profile.edit')" class="nav-link">
+                      <x-dropdown-link :href="route('profile.edit')" class="user">
                           {{ __(Auth::user()->name) }}
-                       </x-dropdown-link>
-                        <form method="POST" action="{{ route('logout') }}">
-                          @csrf
-                          <x-dropdown-link :href="route('logout')"
-                                  onclick="event.preventDefault();
-                                              this.closest('form').submit();">
-                              {{ __('Sair') }}
-                          </x-dropdown-link>
-                        </form>
-                         @else
+                      </x-dropdown-link>
+                      <form method="POST" action="{{ route('logout') }}">
+                      @csrf
+                      <x-dropdown-link class="sair" :href="route('logout')"
+                          onclick="event.preventDefault();
+                          this.closest('form').submit();">
+                          {{ __('Sair') }}
+                      </x-dropdown-link>
+                      </form>
+                      @else
                         <a href="{{ route('register') }}" class="nav-link" id="btn-cadastrar">Cadastrar</a>
-                        <a href="{{ route('login') }}" id="btn-entrar" class="nav-link">Entrar</a>
+                        <a href="{{ route('login') }}" id="btn-entrar" class="nav-link">Entrar</a> 
                         @endauth
                     </ul>
                 </div>

@@ -150,11 +150,13 @@ class PetController extends Controller
         return view('pets.userpets', compact('userPets'));
     }
 
-    public function adotar(Request $request)
+    public function agendar(Request $request)
     {
         $data = $request->all();
 
-        $id = $data['pet_id'];
+        dd($data);
+
+        /* $id = $data['pet_id'];
 
         $pet = Pet::find($id);
 
@@ -165,7 +167,7 @@ class PetController extends Controller
         //return redirect()->back();
         //return redirect()->route('pets.show', compact('pet'))->with('success', 'Pet excluído com sucesso!');
         $mensagem="Agendamento realizado com sucesso!";
-        return view('pets.show', compact('pet','mensagem'));
+        return view('pets.show', compact('pet','mensagem')); */
     }
 
     public function agendamento(){
