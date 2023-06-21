@@ -58,6 +58,7 @@ class PetController extends Controller
         }
         $data['fotos'] = $caminho_imagem;
 
+
         $register = Pet::create($data);
 
         return redirect()->route('pets.userPets')->with('success', 'Pet cadastrado com sucesso!');
@@ -85,7 +86,8 @@ class PetController extends Controller
         if (!$pet = Pet::find($id)) {
             return redirect()->route('pets.userPets');
         }
-        $types = Type::find($pet->type_id);
+        //$types = Type::find($pet->type_id);
+        $types = Type::where('id', $pet->type_id)->first();
         $ports = Port::find($pet->port_id);
         $sexes = Sex::find($pet->sex_id);
 
@@ -103,7 +105,7 @@ class PetController extends Controller
         }
 
         $data = $request->all();
-        
+
         if ($request->hasFile('fotos')) {
             if(Storage::exists($pet->fotos)){
                 Storage::delete($pet->fotos);
@@ -148,11 +150,13 @@ class PetController extends Controller
         return view('pets.userpets', compact('userPets'));
     }
 
-    public function adotar(Request $request)
+    public function agendar(Request $request)
     {
         $data = $request->all();
 
-        $id = $data['pet_id'];
+        dd($data);
+
+        /* $id = $data['pet_id'];
 
         $pet = Pet::find($id);
 
@@ -163,7 +167,7 @@ class PetController extends Controller
         //return redirect()->back();
         //return redirect()->route('pets.show', compact('pet'))->with('success', 'Pet excluído com sucesso!');
         $mensagem="Agendamento realizado com sucesso!";
-        return view('pets.show', compact('pet','mensagem'));
+        return view('pets.show', compact('pet','mensagem')); */
     }
 
     public function agendamento(){
