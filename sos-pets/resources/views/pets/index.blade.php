@@ -5,6 +5,15 @@
 @section('conteudo')
 
 
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Não compre, adote!</div>
+        <div class="masthead-heading text-uppercase">Laços eternos começam com uma adoção</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#pets">Escolha seu Pet</a>
+    </div>
+</header>
+
+
 
 <!--
  <div class="flex flex-wrap justify-center px-4 gap-4 mt-10">
@@ -26,7 +35,7 @@
 
 
         <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
+        <section class="page-section bg-light">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Pets Cadastrados</h2>

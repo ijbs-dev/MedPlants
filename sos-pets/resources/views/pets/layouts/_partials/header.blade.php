@@ -73,7 +73,7 @@
     </div>
   </nav>
 
-  
+
   {{-- <div class="py-32 text-center">
     <h2 class="font-extrabold text-4xl">Pets Cadastrados</h2>
   </div> --}}
@@ -126,12 +126,13 @@
   }
 
    .user{
-    color:#ffffff;
+    color:#696969;
     text-decoration: none;
     font-family: sans-serif;
     font-size: 15.2px;
     padding:8px 40px;
     background-color: #ffc800;
+    border-radius: 10px
   }
 
   .user:hover{
@@ -156,8 +157,8 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('pets.userPets') }}">Meus Pets</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('pets.agendamentos') }}">Agendamentos</a></li>
                       @endauth
-                        <li class="nav-item"><a class="nav-link" href="#contact">Sobre</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+                        <li class="nav-item"><a class="nav-link" >Sobre</a></li>
+                        <li class="nav-item"><a class="nav-link" >Contato</a></li>
 
                       @auth
                       <x-dropdown-link :href="route('profile.edit')" class="user">
@@ -173,17 +174,11 @@
                       </form>
                       @else
                         <a href="{{ route('register') }}" class="nav-link" id="btn-cadastrar">Cadastrar</a>
-                        <a href="{{ route('login') }}" id="btn-entrar" class="nav-link">Entrar</a> 
+                        <a href="{{ route('login') }}" id="btn-entrar" class="nav-link">Entrar</a>
                         @endauth
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">Não compre, adote!</div>
-                <div class="masthead-heading text-uppercase">Laços eternos começam com uma adoção</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Escolha seu Pet</a>
-            </div>
-        </header>
+
