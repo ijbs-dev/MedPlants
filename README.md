@@ -43,139 +43,138 @@ npm run dev
 
 - Procedimento Execução no github
 
-1) Verificar Status 
-        
-        git status  
-        
-2) Idendetifica qual branch está 
-        
-        git branch
-        
-Obs.: Os proximos 2 comandos precisam de cuidado  
+**Inicial:**
+1. Iniciar o repositório Git:
+   ```
+   git init
+   ```
 
-Ao identificar que esta na main exexuta para atualizar 
+2. Configurar o email do usuário:
+   ```
+   git config --global user.email "smaeljbs@gmail.com"
+   ```
 
-        git pull 
+3. Configurar o nome do usuário:
+   ```
+   git config --global user.name ijbs
+   ```
 
-Se não não estiver na main exexuta para redirecionar para main 
+**Atualizando:**
+4. Verificar o status:
+   ```
+   git status
+   ```
 
-        git checkout main  
+5. Identificar qual branch está:
+   ```
+   git branch
+   ```
 
-3) Cria uma nova branch com novo nome 
+6. Atualizar a branch atual (main):
+   ```
+   git pull
+   ```
+   ou
+   ```
+   git checkout main
+   ```
 
-        git checkout -b NOMENOVABRANCH
-        
-4) Adiciona tudo
+**Usando e Configurando Branch:**
+7. Criação de uma nova branch chamada "Ajustes":
+   ```
+   git branch Ajustes
+   ```
 
-        git add . 
+8. Sair da branch atual (main):
+   ```
+   git checkout -
+   ```
 
-5) Faz commit
+9. Mudar para a branch "Ajustes":
+   ```
+   git checkout Ajustes
+   ```
 
-        git commit -m "mensagem" 
+10. Renomear a branch "Ajustes" para "NovosAjustes":
+    ```
+    git branch -m Ajustes NovosAjustes
+    ```
 
-6) Carregar no remoto
+11. Atualizar a branch "NovosAjustes" a partir da branch "main":
+    ```
+    git merge main NovosAjustes
+    ```
+    ou
+    ```
+    git checkout NovosAjustes
+    git merge main
+    ```
 
-        git push -u origin NOMENOVABRANCH 
+12. Apagar a branch "NovosAjustes":
+    ```
+    git branch -d NovosAjustes
+    ```
 
-===========================================================
+13. Dar git pull em uma branch específica sem precisar sair dela:
+    ```
+    git pull origin NOME_BRANCH
+    ```
+    Substitua "NOME_BRANCH" pelo nome da branch específica em que você deseja dar o pull.
 
-Aqui está a sequência organizada de comandos com algumas adições/modificações para atender às suas solicitações:
+**Repositório Local:**
+14. Adicionar o arquivo README.md:
+    ```
+    echo "# Project-Java" >> README.md
+    ```
 
-1. Criação de uma nova branch chamada "Ajustes":
-```
-git branch Ajustes
-```
+15. Adicionar um arquivo específico:
+    ```
+    git add NOMEARQUIVO
+    ```
+    Substitua "NOMEARQUIVO" pelo nome do arquivo que você deseja adicionar.
 
-2. Sair da branch atual (main):
-```
-git checkout -
-```
+16. Adicionar todos os arquivos modificados:
+    ```
+    git add .
+    ```
 
-3. Mudar para a branch "Ajustes":
-```
-git checkout Ajustes
-```
+17. Fazer o primeiro commit:
+    ```
+    git commit -m "first commit"
+    ```
 
-4. Renomear a branch "Ajustes" para "NovosAjustes":
-```
-git branch -m Ajustes NovosAjustes
-```
+**Repositório Remoto:**
+18. Renomear a branch "main" para "main_antiga" (opcional, caso você queira renomear a branch):
+    ```
+    git branch -m main main_antiga
+    ```
 
-5. Atualizar a branch "NovosAjustes" a partir da branch "main":
-```
-git merge main NovosAjustes
-```
-ou
-```
-git checkout NovosAjustes
-git merge main
-```
+19. Adicionar o repositório remoto:
+    ```
+    git remote add origin https://github.com/ijbs-dev/Project-Java.git
+    ```
 
-6. Apagar a branch "NovosAjustes":
-```
-git branch -d NovosAjustes
-```
+20. Fazer o push inicial para o repositório remoto:
+    ```
+    git push -u origin main
+    ```
 
-7. Dar git pull em uma branch específica sem precisar sair dela:
-```
-git pull origin NOME_BRANCH
-```
-Substitua "NOME_BRANCH" pelo nome da branch específica em que você deseja dar o pull.
+21. Comando para resolver conflitos de git pull, quando vem tudo no remoto:
+    ```
+    git pull --rebase --autostash
+    ```
 
-8. Adicionar o arquivo README.md:
-```
-echo "# Project-Java" >> README.md
-```
+22. Criação de uma nova branch com um novo nome:
+    ```
+    git checkout -b NOMENOVABRANCH
+    ```
 
-9. Iniciar o repositório Git:
-```
-git init
-```
+23. Adicionar todas as mudanças:
+    ```
+    git add .
+    ```
 
-10. Configurar o email do usuário:
-```
-git config --global user.email "smaeljbs@gmail.com"
-```
-
-11. Configurar o nome do usuário:
-```
-git config --global user.name ijbs
-```
-
-12. Adicionar um arquivo específico:
-```
-git add NOMEARQUIVO
-```
-Substitua "NOMEARQUIVO" pelo nome do arquivo que você deseja adicionar.
-
-13. Adicionar todos os arquivos modificados:
-```
-git add .
-```
-
-14. Fazer o primeiro commit:
-```
-git commit -m "first commit"
-```
-
-15. Renomear a branch "main" para "main_antiga" (opcional, caso você queira renomear a branch):
-```
-git branch -m main main_antiga
-```
-
-16. Adicionar o repositório remoto:
-```
-git remote add origin https://github.com/ijbs-dev/Project-Java.git
-```
-
-17. Fazer o push inicial para o repositório remoto:
-```
-git push -u origin main
-```
-18. Comando para resolver conflitos de git pull, quando vem tudo no remoto:
-```
-git pull --rebase --autostash
-```
-Por favor, lembre-se de adaptar os comandos de acordo com suas necessidades específicas.
-
+24. Fazer um commit:
+    ```
+    git commit
 
