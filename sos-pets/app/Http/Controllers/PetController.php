@@ -62,7 +62,7 @@ class PetController extends Controller
 
         $register = Pet::create($data);
 
-        return redirect()->route('pets.userPets')->with('success', 'Pet cadastrado com sucesso!');
+        return redirect()->route('pets.index')->with('success', 'Pet cadastrado com sucesso!');
 
     }
 

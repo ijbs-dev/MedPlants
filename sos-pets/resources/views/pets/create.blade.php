@@ -31,11 +31,7 @@
     }
   </script> --}}
 
-<style>
-    input::placeholder {
-  color: red; /* Define a cor vermelha para o placeholder */
-}
-  </style>
+
 
 
 <section class="page-section" id="contact">
