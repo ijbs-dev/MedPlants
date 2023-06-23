@@ -41,9 +41,10 @@ php artisan serve
 No terminal 2, rodar o seguinte comando:
 npm run dev
 
-- Procedimento Execução no github
+**Procedimento Execução no github**
 
-**Inicial:**
+***Inicial:***
+
 1. Iniciar o repositório Git:
    ```
    git init
@@ -59,7 +60,8 @@ npm run dev
    git config --global user.name ijbs
    ```
 
-**Atualizando:**
+***Atualizando:***
+
 4. Verificar o status:
    ```
    git status
@@ -79,7 +81,8 @@ npm run dev
    git checkout main
    ```
 
-**Usando e Configurando Branch:**
+***Usando e Configurando Branch:***
+
 7. Criação de uma nova branch chamada "Ajustes":
    ```
    git branch Ajustes
@@ -121,7 +124,8 @@ npm run dev
     ```
     Substitua "NOME_BRANCH" pelo nome da branch específica em que você deseja dar o pull.
 
-**Repositório Local:**
+***Repositório Local:***
+
 14. Adicionar o arquivo README.md:
     ```
     echo "# Project-Java" >> README.md
@@ -143,7 +147,8 @@ npm run dev
     git commit -m "first commit"
     ```
 
-**Repositório Remoto:**
+***Repositório Remoto:***
+
 18. Renomear a branch "main" para "main_antiga" (opcional, caso você queira renomear a branch):
     ```
     git branch -m main main_antiga
@@ -177,4 +182,3 @@ npm run dev
 24. Fazer um commit:
     ```
     git commit
-
