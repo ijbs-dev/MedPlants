@@ -52,12 +52,12 @@ npm run dev
 
 2. Configurar o email do usuário:
    ```
-   git config --global user.email "smaeljbs@gmail.com"
+   git config --global user.email "nome@email.com"
    ```
 
 3. Configurar o nome do usuário:
    ```
-   git config --global user.name ijbs
+   git config --global user.name NOMEPESSOA
    ```
 
 ***Atualizando:***
