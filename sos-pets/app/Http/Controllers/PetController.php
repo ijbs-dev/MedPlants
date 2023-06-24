@@ -193,4 +193,9 @@ class PetController extends Controller
 
         return view('pets.agendamentos', compact('agendaData'));
     }
+
+    public function contatos()
+    {
+        return view('pets.contatos');
+    }
 }

@@ -64,7 +64,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('pets.agendamentos') }}">Agendamentos</a></li>
                       @endauth
                         <li class="nav-item"><a class="nav-link" >Sobre</a></li>
-                        <li class="nav-item"><a class="nav-link" >Contato</a></li>
+                        <li class="nav-item"><a href="{{ route('pets.contatos') }}" class="nav-link" >Contato</a></li>
 
                       @auth
                       <x-dropdown-link :href="route('profile.edit')" class="user">

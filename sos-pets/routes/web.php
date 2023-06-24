@@ -30,7 +30,11 @@ Route::post('/pets/agendar',[PetController::class,'agendar'])->middleware('auth'
 
 Route::get('/agendamentos',[PetController::class,'agendamento'])->name('pets.agendamentos');
 
-Route::get('/agendar', 'AgendamentoController@index');
+Route::get('/contatos',[PetController::class,'contatos'])->name('pets.contatos');
+
+
+
+//Route::get('/agendar', 'AgendamentoController@index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
