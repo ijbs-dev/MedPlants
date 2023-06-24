@@ -7,6 +7,8 @@
 
 
 
+<!--
+
 <div class="container mx-auto px-4 sm:px-8">
     <div class="py-8">
         <div>
@@ -63,7 +65,7 @@
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-14 h-14">
                                         <img class="w-full h-full rounded-full"
-                                        src="{{ url("storage/{$pet->fotos}") }}"
+                                        src=""
                                             alt="{{ $pet->nome }}" />
                                     </div>
                                     <div class="ml-3">
@@ -175,37 +177,7 @@
     </div>
 </div>
 
-<table class="table table-responsive-xl">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th style="margin-">Tipo</th>
-        <th style="padding-right: 50rem;">Raça</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="alert" role="alert">
-        <td class="d-flex align-items-center">
-            <div style="background-image: url(images/person_1.jpg);">
-                <img class="img" src="{{ url("storage/{$pet->fotos}") }}" alt=""></div>
-            <div class="pl-3">
-                <span>{{ $pet->nome }}</span>
-            </div>
-        </td>
-        <td>
-            @if($pet->type_id == 1)
-            <p>Cachorro</p>
-            @else
-            <p>Gato</p>
-            @endif
-        </td>
-        <td>
-            {{$pet->raca}}
-        </td>
-        <td class="status"><span class="active">Active</span></td>
-      </tr>
-    </tbody>
-  </table>
+-->
 
 
 @endsection
