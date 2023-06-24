@@ -139,16 +139,16 @@ class PetController extends Controller
         return redirect()->route('pets.userPets')->with('success', 'Pet excluído com sucesso!');
     }
 
-    public function userPets()
+    public function meusPets()
     {
 
         $user = auth()->user();
         $id = $user->id;
 
         $user = User::find($id);
-        $userPets = $user->pets()->latest()->get();
+        $meusPets = $user->pets()->latest()->get();
 
-        return view('pets.userpets', compact('userPets'));
+        return view('pets.meuspets', compact('meusPets'));
     }
 
     public function agendar(Request $request)

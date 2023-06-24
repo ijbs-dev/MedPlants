@@ -60,7 +60,7 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                       @auth
                         <li class="nav-item"><a class="nav-link" href="{{ route('pets.create') }}">Cadastrar Pets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('pets.userPets') }}">Meus Pets</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pets.meusPets') }}">Meus Pets</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('pets.agendamentos') }}">Agendamentos</a></li>
                       @endauth
                         <li class="nav-item"><a class="nav-link" >Sobre</a></li>

@@ -23,7 +23,7 @@ Route::get('/pets/create',[PetController::class,'create'])->middleware('auth')->
 Route::get('/pets/editar/{id}',[PetController::class,'edit'])->middleware('auth')->name('pets.edit');
 Route::post('/pets/store',[PetController::class,'store'])->middleware('auth')->name('pets.store');
 Route::get('/pets/{id}',[PetController::class,'show'])->name('pets.show');
-Route::get('/meusPets',[PetController::class,'userPets'])->name('pets.userPets');
+Route::get('/meusPets',[PetController::class,'meusPets'])->name('pets.meusPets');
 Route::put('/pets/editar/{id}',[PetController::class,'update'])->name('pets.update');
 
 Route::post('/pets/agendar',[PetController::class,'agendar'])->middleware('auth')->name('pets.agendar');

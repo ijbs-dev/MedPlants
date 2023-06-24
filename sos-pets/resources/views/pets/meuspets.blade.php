@@ -57,7 +57,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($userPets as $pet)
+                        @foreach ($meusPets as $pet)
                         <tr>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex items-center">
@@ -81,7 +81,7 @@
                                 <p class="text-gray-900 whitespace-no-wrap">Gato</p>
                                 @endif
                             </td>
-                            
+
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <p class="text-gray-900 whitespace-no-wrap">{{$pet->raca}}</p>
                             </td>
@@ -175,6 +175,37 @@
     </div>
 </div>
 
+<table class="table table-responsive-xl">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th style="margin-">Tipo</th>
+        <th style="padding-right: 50rem;">Raça</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="alert" role="alert">
+        <td class="d-flex align-items-center">
+            <div style="background-image: url(images/person_1.jpg);">
+                <img class="img" src="{{ url("storage/{$pet->fotos}") }}" alt=""></div>
+            <div class="pl-3">
+                <span>{{ $pet->nome }}</span>
+            </div>
+        </td>
+        <td>
+            @if($pet->type_id == 1)
+            <p>Cachorro</p>
+            @else
+            <p>Gato</p>
+            @endif
+        </td>
+        <td>
+            {{$pet->raca}}
+        </td>
+        <td class="status"><span class="active">Active</span></td>
+      </tr>
+    </tbody>
+  </table>
 
 
 @endsection
