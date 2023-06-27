@@ -118,7 +118,7 @@ class PetController extends Controller
         //Pet::where('id', $id)->update($data);
         $pet->update($data);
 
-        return redirect()->route('pets.userPets');
+        return redirect()->route('pets.meuspets');
     }
 
     /**
@@ -136,7 +136,7 @@ class PetController extends Controller
 
         $pet->delete();
 
-        return redirect()->route('pets.userPets')->with('success', 'Pet excluído com sucesso!');
+        return redirect()->route('pets.meuspets')->with('success', 'Pet excluído com sucesso!');
     }
 
     public function meusPets()

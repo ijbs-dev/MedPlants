@@ -7,7 +7,7 @@
 
 
 
-  {{-- <script>
+  <!-- <script>
     'use strict'
 
     document.getElementById('button').addEventListener('click', toggleError)
@@ -29,8 +29,7 @@
         el.classList.toggle('text-red-600')
       })
     }
-  </script> --}}
-
+  </script> -->
 
 
 
@@ -40,33 +39,27 @@
             <h2 class="section-heading text-uppercase">Cadastrar Pets</h2>
             {{-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> --}}
         </div>
-        <!-- * * * * * * * * * * * * * * *-->
-        <!-- * * SB Forms Contact Form * *-->
-        <!-- * * * * * * * * * * * * * * *-->
-        <!-- This form is pre-integrated with SB Forms.-->
-        <!-- To make this form functional, sign up at-->
-        <!-- https://startbootstrap.com/solution/contact-forms-->
-        <!-- to get an API token!-->
+       
         <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="{{ route('pets.store') }}" method="post" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="row align-items-center mb-5">
                 <div class="col-md-6 justify-content-center" style="margin: auto;">
                     <div class="form-group">
-                        <!-- Name input-->
+                        
                         <input class="form-control" id="name" name="nome" type="text" placeholder="Nome *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
                     <div class="form-group">
-                        <!-- Name input-->
+                      
                         <input class="form-control" id="name" name="idade" type="text" placeholder="Idade *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="name:required">Idade.</div>
                     </div>
 
-                    <div class="form-group">
-
+                    <div class="form-group" style="margin-top: -8px;">
+                        <option disabled selected class="text-gray-400" style="color:#fff;font-weight:bold;">Selecione um tipo *</option>
                         <select id="tipo" name="type_id" value="" onclick="this.setAttribute('value', this.value);" data-sb-validations="required"
                         class="form-control" style="margin-bottom: 10px; padding:15px; color:#6c757d;opacity:1;font-style:sans-serif">
-                      <option disabled selected class="text-gray-400">Selecione um tipo *</option>
+                           <!-- <option disabled selected class="text-gray-400">Selecione um tipo *</option> -->
                             @foreach ($types as $type)
                             <option class="text-gray-900" value="{{ $type->id }}">{{ $type->tipo }}</option>
                             @endforeach
@@ -79,10 +72,11 @@
                         <div class="invalid-feedback" data-sb-feedback="raca:required">Raça obrigatório</div>
                     </div>
 
-                    <div class="form-grup mb-md-0">
+                    <div class="form-grup mb-md-0" style="margin-top: -8px;">
+                         <option disabled selected class="text-gray-400" style="color:#fff;font-weight:bold;">Selecione um Porte *</option>
                     <select id="porte" data-sb-validations="required" name="port_id" value="" onclick="this.setAttribute('value', this.value);"
                     class="form-control" style="margin-bottom: 20px; padding:15px; color:#6c757d;opacity:1;font-style:sans-serif">
-                        <option disabled selected class="text-gray-400">Selecione um porte *</option>
+                        <!-- <option disabled selected class="text-gray-400">Selecione um porte *</option> -->
                         @foreach ($ports as $port)
                         <option class="text-gray-900" value="{{ $port->id }}">{{ $port->porte }}</option>
                         @endforeach
@@ -90,10 +84,11 @@
                      <div class="invalid-feedback" data-sb-feedback="porte:required">Porte obrigatório.</div>
                     </div>
 
-                    <div class="form-grup mb-md-0">
+                    <div class="form-grup mb-md-0" style="margin-top: -8px;">
+                         <option disabled selected class="text-gray-400" style="color:#fff;font-weight:bold;">Selecione o sexo *</option>
                         <select id="sexo" data-sb-validations="required" name="sex_id" value="" onclick="this.setAttribute('value', this.value);"
                         class="form-control" style="margin-bottom: 15px; padding:15px; color:#6c757d;opacity:1;font-style:sans-serif">
-                            <option disabled selected class="text-gray-400">Selecione o sexo *</option>
+                            <!-- <option disabled selected class="text-gray-400">Selecione o sexo *</option> -->
                             @foreach ($sexes as $sex)
                             <option class="text-gray-900" value="{{ $sex->id }}">{{ $sex->sexo }}</option>
                             @endforeach
@@ -118,7 +113,6 @@
         </form>
     </div>
 </section>
-
 
 
 
