@@ -5,9 +5,11 @@
 @section('conteudo')
 
 @php
-    $user = auth()->user();
+    if(auth()->user()){
+        $user = auth()->user();
         $id = $user->id;
-    @endphp
+    }
+@endphp
 
 <header class="masthead">
     <div class="container">
