@@ -3,6 +3,7 @@
 @section('titulo', 'Contato')
 
 @section('conteudo')
+
 <section class="page-section bg-light" id="team">
     <div class="container">
         <div class="text-center">

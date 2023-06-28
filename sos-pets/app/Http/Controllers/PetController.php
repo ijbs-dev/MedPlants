@@ -58,7 +58,7 @@ class PetController extends Controller
 
         }
         $data['fotos'] = $caminho_imagem;
-
+        $data['date_visit'] = $data['date_visit'];
 
         $register = Pet::create($data);
 
@@ -136,7 +136,7 @@ class PetController extends Controller
 
         $pet->delete();
 
-        return redirect()->route('pets.meuspets')->with('success', 'Pet excluído com sucesso!');
+        return redirect()->route('pets.meusPets')->with('success', 'Pet excluído com sucesso!');
     }
 
     public function meusPets()
@@ -154,8 +154,7 @@ class PetController extends Controller
     public function agendar(Request $request)
     {
         $data = $request->all();
-
-        dd($data);
+        // $register = Pet::create($data);
 
         /* $id = $data['pet_id'];
 

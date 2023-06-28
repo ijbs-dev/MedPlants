@@ -39,18 +39,18 @@
             <h2 class="section-heading text-uppercase">Cadastrar Pets</h2>
             {{-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> --}}
         </div>
-       
+
         <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="{{ route('pets.store') }}" method="post" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="row align-items-center mb-5">
                 <div class="col-md-6 justify-content-center" style="margin: auto;">
                     <div class="form-group">
-                        
+
                         <input class="form-control" id="name" name="nome" type="text" placeholder="Nome *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>
                     <div class="form-group">
-                      
+
                         <input class="form-control" id="name" name="idade" type="text" placeholder="Idade *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="name:required">Idade.</div>
                     </div>
@@ -106,7 +106,11 @@
                         <textarea class="form-control" name="descricao" id="message" placeholder="Descrição *" data-sb-validations="required"></textarea>
                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                     </div>
-
+                    <div class="form-group mt-4">
+                        <option disabled selected class="text-gray-400" style="color:#fff;font-weight:bold;">Data Disponivel Para Visita *</option>
+                        <input class="form-control" id="data" name="date_visit" type="date" placeholder="Data Disponivel Para Visita *" data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="name:required">Data.</div>
+                    </div>
                 </div>
             </div>
             <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase"  type="submit">Cadastrar</button></div>

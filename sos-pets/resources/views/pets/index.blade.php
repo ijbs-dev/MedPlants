@@ -4,6 +4,10 @@
 
 @section('conteudo')
 
+@php
+    $user = auth()->user();
+        $id = $user->id;
+    @endphp
 
 <header class="masthead">
     <div class="container">
@@ -45,6 +49,9 @@
 
            <!-- Portfolio item 1 modal popup-->
        @foreach ($pets as $pet)
+       @php
+        $userPetId = $pet->user_id;
+        @endphp
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -97,17 +104,14 @@
 
 
                                      <!-- Botão -->
-                                      @php
-                                        $dataAtual = new DateTime();
-                                          $dataFormatada = $dataAtual->format('Y-m-d');
-                                      @endphp
-                                      <form action="{{ route('pets.agendar')}}" method="POST">
+
+                                      <form onsubmit="return interromper()" action="{{ route('pets.agendar')}}" method="POST">
                                           @csrf
                                           @if (isset(Auth::user()->id))
                                               <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                           @endif
                                               <input type="hidden" name="pet_id" value="{{$pet->id}}">
-                                                  <input type="hidden" name="adoption_date" value="{{$dataFormatada}}">
+                                                  <input type="hidden" name="adoption_date" value="{{$pet->date_visit}}">
                                               <!--<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Agendar</button>-->
 
                                             <button type="submit" class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal">
@@ -123,14 +127,21 @@
             </div>
         </div>
         @endforeach
-
-
-
-
-
-
-
-
+        <script>
+            function interromper() {
+              // Obtém os valores dos campos do formulário
+              let userPetId = "{{ $userPetId }}";
+              let userIdLogado = "{{ $id }}";
+              console.log(userPetId,userIdLogado);
+              // Compara os valores
+              if (userPetId === userIdLogado) {
+                alert("Voçê não pode agendar que foi cadastrado por voçê.");
+                return false; // Retorna falso para interromper o envio do formulário
+              }
+              // Caso contrário, o envio do formulário prossegue
+              return true;
+            }
+        </script>
 
 
 @endsection

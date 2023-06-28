@@ -18,7 +18,8 @@ class Pet extends Model
         'idade',
         'raca',
         'descricao',
-        'fotos'
+        'fotos',
+        'date_visit'
     ];
 
     public function user() {
