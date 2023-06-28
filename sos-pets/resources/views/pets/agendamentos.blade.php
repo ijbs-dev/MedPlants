@@ -5,6 +5,11 @@
 @section('conteudo')
 
 
+@php
+    dd($agenda)
+@endphp
+
+
 
 
 

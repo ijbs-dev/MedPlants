@@ -154,8 +154,12 @@ class PetController extends Controller
     public function agendar(Request $request)
     {
         $data = $request->all();
-        // $register = Pet::create($data);
+        $petId = $data['pet_id'];
+        $pet = Pet::with('user')->where('id',$petId);
+        $agenda = Adopt::create($data);
 
+        //return redirect()->route('pets.agendamentos', compact('agenda'))->with('success', 'Visita agendada com sucesso');
+        return view('pets.agendamentos', compact('agenda'));
         /* $id = $data['pet_id'];
 
         $pet = Pet::find($id);

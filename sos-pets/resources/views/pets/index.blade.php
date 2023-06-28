@@ -131,7 +131,7 @@
             function interromper() {
               // Obtém os valores dos campos do formulário
               let userPetId = "{{ $userPetId }}";
-              let userIdLogado = "{{ $id }}";
+              let userIdLogado = "{{ isset($id) ? $id : '' }}";
               console.log(userPetId,userIdLogado);
               // Compara os valores
               if (userPetId === userIdLogado) {
