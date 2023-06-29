@@ -49,7 +49,7 @@ class User extends Authenticatable
         return $this->hasMany(Pet::class);
     }
 
-    public function adopts() {
-        return $this->hasMany(Adopt::class);
+    public function schedule() {
+        return $this->hasMany(Schedule::class);
     }
 }

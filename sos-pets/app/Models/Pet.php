@@ -26,8 +26,8 @@ class Pet extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function adopts() {
-        return $this->hasMany(Adopt::class);
+    public function schedule() {
+        return $this->hasMany(Schedule::class);
     }
 
     public function type() {

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Adopt extends Model
+class Schedule extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,9 @@ class Adopt extends Model
         'adoption_date',
         'user_id',
         'pet_id',
+        'hour',
+        'observation',
+        'status'
     ];
 
     public function user() {
