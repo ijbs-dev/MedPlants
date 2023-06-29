@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adopts', function (Blueprint $table) {
+        Schema::create('schedule', function (Blueprint $table) {
             $table->id();
             $table->date('adoption_date');
+            $table->time('hour');
+            $table->string('observation');
+            $table->string('status');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('pet_id')->constrained()->onDelete('cascade');
             $table->timestamps();
