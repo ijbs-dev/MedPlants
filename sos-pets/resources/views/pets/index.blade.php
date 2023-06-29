@@ -51,7 +51,7 @@
 
            <!-- Portfolio item 1 modal popup-->
        @foreach ($pets as $pet)
-       @php
+        @php
         $userPetId = $pet->user_id;
         @endphp
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -131,8 +131,8 @@
         @endforeach
         <script>
             function interromper() {
-              // Obtém os valores dos campos do formulário
-              let userPetId = "{{ $userPetId }}";
+              // Obtém os valores dos camposdo formulário
+              let userPetId = "{{ isset($userPetId) ? $userPetId : '' }}";
               let userIdLogado = "{{ isset($id) ? $id : '' }}";
               console.log(userPetId,userIdLogado);
               // Compara os valores
