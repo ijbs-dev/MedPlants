@@ -58,8 +58,7 @@ class PetController extends Controller
 
         }
         $data['fotos'] = $caminho_imagem;
-        $data['date_visit'] = $data['date_visit'];
-
+        
         $register = Pet::create($data);
 
         return redirect()->route('pets.index')->with('success', 'Pet cadastrado com sucesso!');

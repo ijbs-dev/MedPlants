@@ -1,90 +1,81 @@
 
 
-<style>
 
-  #btn-entrar{
-    background-color: #ffc800;
-    color: #000000;
-    border-radius: 15px;
-  }
-
-  #btn-entrar:hover{
-    background-color: #FFA500;
-  }
-
-  #btn-cadastrar{
-    color: #ffffff;
-    font-family: sans-serif;
-    font-size: 15.2px;
-  }
-
-  #btn-cadastrar:hover{
-    color: #ffc800;
-  }
-
-  .sair{
-    color:#ffffff;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 15.2px;
-    padding:8px 24px;
-    margin-top: 50px;
-  }
-
-   .user{
-    color:#696969;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 15.2px;
-    padding:8px 40px;
-    background-color: #ffc800;
-    border-radius: 10px
-  }
-
-  .user:hover{
-    background-color: #ffc800;
-  }
-
-</style>
+<!-- novo começo -->
 
 
+ <nav class="p-5 bg-gray-900 text-white shadow md:flex md:items-center md:justify-between">
+    <div class="flex justify-between items-center ">
+      <span style="font-family: sans-serif;" class="text-2xl font-[Poppins] cursor-pointer hover:text-cyan-500 duration-500">
+        <img class="h-10 inline"
+          src="{{ asset('images/pata.png')}}">
+        <a href="{{route('pets.index')}}">SosPets</a> 
+      </span>
 
- <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="{{route('pets.index')}}">SosPets</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                      @auth
-                        <li class="nav-item"><a class="nav-link" href="{{ route('pets.create') }}">Cadastrar Pets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('pets.meusPets') }}">Meus Pets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('pets.agendamentos') }}">Agendamentos</a></li>
-                      @endauth
-                        <li class="nav-item"><a class="nav-link" >Sobre</a></li>
-                        <li class="nav-item"><a href="{{ route('pets.contatos') }}" class="nav-link" >Contato</a></li>
+      <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+        <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+      </span>
+    </div>
 
-                      @auth
-                      <x-dropdown-link :href="route('profile.edit')" class="user">
-                          {{ __(Auth::user()->name) }}
-                      </x-dropdown-link>
-                      <form method="POST" action="{{ route('logout') }}">
-                      @csrf
-                      <x-dropdown-link class="sair" :href="route('logout')"
-                          onclick="event.preventDefault();
-                          this.closest('form').submit();">
-                          {{ __('Sair') }}
-                      </x-dropdown-link>
-                      </form>
-                      @else
-                        <a href="{{ route('register') }}" class="nav-link" id="btn-cadastrar">Cadastrar</a>
-                        <a href="{{ route('login') }}" id="btn-entrar" class="nav-link">Entrar</a>
-                        @endauth
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <ul class="text-white md:text-white md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-gray-900 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+      @auth
+      <li class="mx-4 my-6 md:my-0">
+        <a href="{{ route('pets.create') }}" class="text-xl hover:text-cyan-500 duration-500">Cadastrar Pet</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="{{ route('pets.meusPets') }}" class="text-xl hover:text-cyan-500 duration-500">Meus Pets</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="{{ route('pets.agendamentos') }}" class="text-xl hover:text-cyan-500 duration-500">Agendamentos</a>
+      </li>
+      @endauth
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Sobre</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="{{ route('pets.contatos') }}" class="text-xl hover:text-cyan-500 duration-500">Contato</a>
+      </li>
 
+      @auth
+        <x-dropdown-link :href="route('profile.edit')" class="text-sm bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">
+        {{ __(Auth::user()->name) }}
+        </x-dropdown-link>
+        <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <x-dropdown-link class="text-sm text-xl hover:text-white duration-500" :href="route('logout')"
+          onclick="event.preventDefault();
+        this.closest('form').submit();">
+        {{ __('Sair') }}
+        </x-dropdown-link>
+        </form>
+        @else
+        <a href="{{ route('register') }}" class="text-xl hover:text-cyan-500 duration-500" id="btn-cadastrar">Cadastrar</a>
+        <a href="{{ route('login') }}" id="btn-entrar" class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">Entrar</a>
+      @endauth
+    
+
+   
+<h2 class=""></h2>
+    </ul>
+  </nav>
+
+
+
+
+
+
+  
+
+
+  <script>
+    function Menu(e){
+      let list = document.querySelector('ul');
+      e.name === 'menu' ? (e.name = "close",list.classList.add('top-[80px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
+    }
+  </script>
+ 
+
+
+
+ 
 
