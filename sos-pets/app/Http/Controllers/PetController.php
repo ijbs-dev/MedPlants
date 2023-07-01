@@ -46,6 +46,7 @@ class PetController extends Controller
     public function store(Request $request)
     {
 
+
         $data = $request->all();
 
         $data['user_id'] = auth()->user()->id;
