@@ -6,119 +6,6 @@
 @section('conteudo')
 
 
-
-  <!-- <script>
-    'use strict'
-
-    document.getElementById('button').addEventListener('click', toggleError)
-    const errMessages = document.querySelectorAll('#error')
-
-    function toggleError() {
-      // Show error message
-      errMessages.forEach((el) => {
-        el.classList.toggle('hidden')
-      })
-
-      // Highlight input and label with red
-      const allBorders = document.querySelectorAll('.border-gray-200')
-      const allTexts = document.querySelectorAll('.text-gray-500')
-      allBorders.forEach((el) => {
-        el.classList.toggle('border-red-600')
-      })
-      allTexts.forEach((el) => {
-        el.classList.toggle('text-red-600')
-      })
-    }
-  </script> -->
-
-
-
-<section class="page-section" id="contact">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase">Cadastrar Pets</h2>
-            {{-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> --}}
-        </div>
-
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="{{ route('pets.store') }}" method="post" enctype="multipart/form-data" novalidate>
-            @csrf
-            <div class="row align-items-center mb-5">
-                <div class="col-md-6 justify-content-center" style="margin: auto;">
-                    <div class="form-group">
-
-                        <input class="form-control" id="name" name="nome" type="text" placeholder="Nome *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                    </div>
-                    <div class="form-group">
-
-                        <input class="form-control" id="name" name="idade" type="text" placeholder="Idade *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="name:required">Idade.</div>
-                    </div>
-
-                    <div class="form-group" style="margin-top: -8px;">
-                        <option disabled selected class="text-gray-400" style="color:#fff;font-weight:bold;">Selecione um tipo *</option>
-                        <select id="tipo" name="type_id" value="" onclick="this.setAttribute('value', this.value);" data-sb-validations="required"
-                        class="form-control" style="margin-bottom: 10px; padding:15px; color:#6c757d;opacity:1;font-style:sans-serif">
-                           <!-- <option disabled selected class="text-gray-400">Selecione um tipo *</option> -->
-                            @foreach ($types as $type)
-                            <option class="text-gray-900" value="{{ $type->id }}">{{ $type->tipo }}</option>
-                            @endforeach
-                      </select>
-                        <div class="invalid-feedback" data-sb-feedback="tipo:required">Tipo obrigatório.</div>
-                    </div>
-
-                    <div class="form-group mb-md-0">
-                        <input class="form-control" style="margin-bottom: 20px" name="raca" id="raca" type="tel" placeholder="Raça *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="raca:required">Raça obrigatório</div>
-                    </div>
-
-                    <div class="form-grup mb-md-0" style="margin-top: -8px;">
-                         <option disabled selected class="text-gray-400" style="color:#fff;font-weight:bold;">Selecione um Porte *</option>
-                    <select id="porte" data-sb-validations="required" name="port_id" value="" onclick="this.setAttribute('value', this.value);"
-                    class="form-control" style="margin-bottom: 20px; padding:15px; color:#6c757d;opacity:1;font-style:sans-serif">
-                        <!-- <option disabled selected class="text-gray-400">Selecione um porte *</option> -->
-                        @foreach ($ports as $port)
-                        <option class="text-gray-900" value="{{ $port->id }}">{{ $port->porte }}</option>
-                        @endforeach
-                    </select>
-                     <div class="invalid-feedback" data-sb-feedback="porte:required">Porte obrigatório.</div>
-                    </div>
-
-                    <div class="form-grup mb-md-0" style="margin-top: -8px;">
-                         <option disabled selected class="text-gray-400" style="color:#fff;font-weight:bold;">Selecione o sexo *</option>
-                        <select id="sexo" data-sb-validations="required" name="sex_id" value="" onclick="this.setAttribute('value', this.value);"
-                        class="form-control" style="margin-bottom: 15px; padding:15px; color:#6c757d;opacity:1;font-style:sans-serif">
-                            <!-- <option disabled selected class="text-gray-400">Selecione o sexo *</option> -->
-                            @foreach ($sexes as $sex)
-                            <option class="text-gray-900" value="{{ $sex->id }}">{{ $sex->sexo }}</option>
-                            @endforeach
-                        </select>
-                        <div class="invalid-feedback" data-sb-feedback="sexo:required">Campo sexo obrigatório.</div>
-                    </div>
-
-                    <div class="form-group">
-                        <input class="form-control" id="fotos" name="fotos" type="file" placeholder="Idade *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="fotos:required">Campo imagem é obrigatório</div>
-                    </div>
-
-                    <div class="form-group form-group-textarea mb-md-0" style="margin-top: 20px;">
-                        <!-- Message input-->
-                        <textarea class="form-control" name="descricao" id="message" placeholder="Descrição *" data-sb-validations="required"></textarea>
-                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase"  type="submit">Cadastrar</button></div>
-        </form>
-    </div>
-</section>
-
-
-
-
-<!-- component -->
-<!-- Code on GiHub: https://github.com/vitalikda/form-floating-labels-tailwindcss -->
 <style>
   .-z-1 {
     z-index: -1;
@@ -156,146 +43,123 @@
   }
 </style>
 
-<div class="min-h-screen bg-gray-100 p-0 sm:p-12">
+
+
+<div class="min-h-screen bg-slate-200 p-0 sm:p-12">
+
+
   <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-    <h1 class="text-2xl font-bold mb-8">Form With Floating Labels</h1>
-    <form id="form" novalidate>
+    <h1 class="text-2xl font-bold mb-8 text-center text-blue-400">Cadastrar Pets</h1>
+    <form id="form" novalidate action="{{ route('pets.store') }}" method="post" enctype="multipart/form-data">
+        @csrf
       <div class="relative z-0 w-full mb-5">
         <input
           type="text"
-          name="name"
+          name="nome"
           placeholder=" "
           required
           class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
         />
-        <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Enter name</label>
-        <span class="text-sm text-red-600 hidden" id="error">Name is required</span>
-      </div>
-
-      <div class="relative z-0 w-full mb-5">
-        <input
-          type="email"
-          name="email"
-          placeholder=" "
-          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-        />
-        <label for="email" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Enter email address</label>
-        <span class="text-sm text-red-600 hidden" id="error">Email address is required</span>
-      </div>
-
-      <div class="relative z-0 w-full mb-5">
-        <input
-          type="password"
-          name="password"
-          placeholder=" "
-          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-        />
-        <label for="password" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Enter password</label>
-        <span class="text-sm text-red-600 hidden" id="error">Password is required</span>
-      </div>
-
-      <fieldset class="relative z-0 w-full p-px mb-5">
-        <legend class="absolute text-gray-500 transform scale-75 -top-3 origin-0">Choose an option</legend>
-        <div class="block pt-3 pb-2 space-x-4">
-          <label>
-            <input
-              type="radio"
-              name="radio"
-              value="1"
-              class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
-            />
-            Option 1
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="radio"
-              value="2"
-              class="mr-2 text-black border-2 border-gray-300 focus:border-gray-300 focus:ring-black"
-            />
-            Option 2
-          </label>
-        </div>
-        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-      </fieldset>
-
-      <div class="relative z-0 w-full mb-5">
-        <select
-          name="select"
-          value=""
-          onclick="this.setAttribute('value', this.value);"
-          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-        >
-          <option value="" selected disabled hidden></option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
-        </select>
-        <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Select an option</label>
-        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-      </div>
-
-      <div class="flex flex-row space-x-4">
-        <div class="relative z-0 w-full mb-5">
-          <input
-            type="text"
-            name="date"
-            placeholder=" "
-            onclick="this.setAttribute('type', 'date');"
-            class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-          />
-          <label for="date" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Date</label>
-          <span class="text-sm text-red-600 hidden" id="error">Date is required</span>
-        </div>
-        <div class="relative z-0 w-full">
-          <input
-            type="text"
-            name="time"
-            placeholder=" "
-            onclick="this.setAttribute('type', 'time');"
-            class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-          />
-          <label for="time" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Time</label>
-          <span class="text-sm text-red-600 hidden" id="error">Time is required</span>
-        </div>
-      </div>
-
-      <div class="relative z-0 w-full mb-5">
-        <input
-          type="number"
-          name="money"
-          placeholder=" "
-          class="pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-        />
-        <div class="absolute top-0 left-0 mt-3 ml-1 text-gray-400">$</div>
-        <label for="money" class="absolute duration-300 top-3 left-5 -z-1 origin-0 text-gray-500">Amount</label>
-        <span class="text-sm text-red-600 hidden" id="error">Amount is required</span>
+        <label for="nome" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Digite o nome do pet</label>
+        <span class="text-sm text-red-600 hidden" id="error">Name é obrigatório</span>
       </div>
 
       <div class="relative z-0 w-full mb-5">
         <input
           type="text"
-          name="duration"
+          name="idade"
           placeholder=" "
-          class="pt-3 pb-2 pr-12 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
         />
-        <div class="absolute top-0 right-0 mt-3 mr-4 text-gray-400">min</div>
-        <label for="duration" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Duration</label>
-        <span class="text-sm text-red-600 hidden" id="error">Duration is required</span>
+        <label for="idade" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Digite a idade</label>
+        <span class="text-sm text-red-600 hidden" id="error">Idade é obrigatório</span>
       </div>
+
+       <div class="relative z-0 w-full mb-5">
+         <select
+            name="type_id"
+            value=""
+            onclick="this.setAttribute('value', this.value);"
+            class="pt-3 text-gray-500 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+         <option disabled selected class="text-gray-400">Selecione o tipo</option>
+                @foreach ($types as $type)
+                <option class="text-gray-900" value="{{ $type->id }}">{{ $type->tipo }}</option>
+                @endforeach
+         </select>
+         <span class="text-sm text-red-600 hidden" id="error">Tipo é obrigatório</span>
+       </div>
+
+        <div class="relative z-0 w-full mb-5">
+        <input
+          type="text"
+          name="raca"
+          placeholder=" "
+          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+        />
+        <label for="raca" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Digite a raça</label>
+        <span class="text-sm text-red-600 hidden" id="error">Raça é obrigatório</span>
+       </div>
+
+        <div class="relative z-0 w-full mb-5">
+         <select
+            name="port_id"
+            value=""
+            onclick="this.setAttribute('value', this.value);"
+            class="pt-3 text-gray-500 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+         <option disabled selected class="text-gray-400">Selecione o porte</option>
+                @foreach ($ports as $port)
+                <option class="text-gray-900" value="{{ $port->id }}">{{ $port->porte }}</option>
+                @endforeach
+         </select>
+         <span class="text-sm text-red-600 hidden" id="error">Tipo é obrigatório</span>
+        </div>
+
+         <div class="relative z-0 w-full mb-5">
+         <select
+            name="sex_id"
+            value=""
+            onclick="this.setAttribute('value', this.value);"
+            class="pt-3 text-gray-500 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+         <option disabled selected class="text-gray-400">Selecione do sexo</option>
+                @foreach ($sexes as $sex)
+                <option class="text-gray-900" value="{{ $sex->id }}">{{ $sex->sexo }}</option>
+                @endforeach
+         </select>
+         <span class="text-sm text-red-600 hidden" id="error">Sexo do pet é obrigatório</span>
+        </div>
+
+         <div class="relative z-0 w-full mb-5">
+        <input
+          type="file"
+          name="fotos"
+          placeholder=" "
+          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+        />
+        <label for="fotos" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Escolha uma Imagem</label>
+        <span class="text-sm text-red-600 hidden" id="error">Imagem é obrigatório</span>
+       </div>
+
+       <div class="relative z-0 w-full mb-5" style="margin-top: 20px;">
+            <textarea class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" name="descricao" id="message" placeholder="Descrição *" data-sb-validations="required"></textarea>
+            <span class="text-sm text-red-600 hidden" id="error">Descrição é obrigatório</span>
+        </div>
 
       <button
         id="button"
-        type="button"
-        class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-pink-500 hover:bg-pink-600 hover:shadow-lg focus:outline-none"
-      >
-        Toggle Error
+        type="submit"
+        class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none">
+        Cadastrar
       </button>
     </form>
   </div>
-</div>
+
+
+  </div>
+
+
+
+
+
 
 <script>
   'use strict'
