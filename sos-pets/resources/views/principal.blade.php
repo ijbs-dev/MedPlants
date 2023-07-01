@@ -13,52 +13,19 @@
         }
     </style>
 
-
-    <!--  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
-     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style2.css') }}"> -->
       @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-
 
      <title>@yield('titulo')</title>
 </head>
-<!--<body class="bg-color-primary text-color-white tracking-wider"> -->
 <body id="page-top">
-
 
     @include('pets.layouts._partials.header')
 
-   <!-- <div class="container mx-auto"> -->
-
+    <div class="container mx-auto">
         @yield('conteudo')
-
-
-
-
-   <!-- </div> -->
-
-
+    </div>
 
     @include('pets.layouts._partials.footer')
-
-
-
-
-
-
 
 </body>
 </html>

@@ -1,127 +1,103 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@extends('principal')
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+@section('titulo', 'Detalhes')
 
+@section('conteudo')
 
-     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<h3 class="text-4xl font-normal leading-normal mt-8 mb-8 text-teal-800 text-center">
+    Meus Pets
+</h3>
 
-     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg container mx-auto">
 
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Nome
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Idade
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Raça
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Tipo
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Porte
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Sexo
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Descrição
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Ações
+                </th>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($meusPets as $pet)
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                    <img class="w-10 h-10 rounded-full" src="{{ url("storage/{$pet->fotos}") }}" alt="Jese image">
+                    <div class="pl-3">
+                        <div class="text-base font-semibold">{{$pet->nome}}</div>
+                    </div>
+                </th>
+                <td class="px-6 py-4">
+                    {{$pet->idade}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$pet->raca}}
+                </td>
+                <td class="px-6 py-4">
+                    @if ($pet->type_id == 1)
+                        Cachorro
+                    @elseif ($pet->type_id == 2)
+                        Gato
+                    @endif
+                </td>
+                <td class="px-6 py-4">
+                    @if ($pet->port_id == 1)
+                    Pequeno
+                @elseif ($pet->port_id == 2)
+                    Médio
+                @elseif ($pet->port_id == 3)
+                    Grande
+                @endif
+                </td>
+                <td class="px-6 py-4">
+                    @if ($pet->sex_id == 1)
+                        Macho
+                    @elseif ($pet->sex_id == 2)
+                        Fêmea
+                    @endif
+                </td>
+                <td class="px-6 py-4">
+                    {{$pet->descricao}}
+                </td>
 
+                <td class="px-6 py-4">
+                    <div class="flex items-center">
+                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> {{ $pet->status }}
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <a href="#" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remover</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-
-
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style2.css') }}">
-
-
-
-     <title>@yield('titulo')</title>
-</head>
-<!--<body class="bg-color-primary text-color-white tracking-wider"> -->
-<body id="page-top" style="background-color:#212529;">
-
-
-<section class="ftco-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-4">
-                <h2 class="heading-section" style="color:#fff;">Meus Pets</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-wrap">
-                    <table class="table">
-                        <thead class="thead-primary">
-                            <tr style="background-color:#7FFFD4;">
-                                <th>&nbsp;</th>
-                                <th style="font-size: 18px; font-weight:bold;">Nome</th>
-                                <th style="font-size: 18px; font-weight:bold;">Idade</th>
-                                <th style="font-size: 18px; font-weight:bold;">Raça</th>
-                                <th style="font-size: 18px; font-weight:bold;">Tipo</th>
-                                <th style="font-size: 18px; font-weight:bold;">Porte</th>
-                                <th style="font-size: 18px; font-weight:bold;">Sexo</th>
-                                <th style="font-size: 18px; font-weight:bold;">Descrição</th>
-                                <th style="font-size: 18px; font-weight:bold;">Status</th>
-                                <th style="font-size: 18px; font-weight:bold;">Ações</th>
-                            </tr>
-                        </thead>
-                    <tbody>
-                         @foreach ($meusPets as $pet)
-                        <tr class="alert" role="alert">
-                            <td>
-                                <img class="img" src="{{ url("storage/{$pet->fotos}") }}"></img>
-                            </td>
-                            <td>
-                                <div class="email">
-                                    <span>{{$pet->nome}}</span>
-                                    <span></span>
-                                </div>
-                            </td>
-                            <td>{{ $pet->idade }}</td>
-                            <td>{{ $pet->raca }}</td>
-                            @if($pet->type_id == 1)
-                            <td>Cachorro</td>
-                            @else
-                            <td>Gato</td>
-                            @endif
-                             @if($pet->port_id == 1)
-                            <td>Pequeno</td>
-                            @elseif($pet->port_id == 2)
-                            <td>Médio</td>
-                            @else
-                            <td>Grande</td>
-                            @endif
-                            @if($pet->sex_id == 1)
-                            <td>Macho</td>
-                            @else
-                            <td>Femêa</td>
-                            @endif
-                            <td>{{$pet->descricao}}</td>
-                            <td>{{ $pet->status }}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="{{ route('pets.edit', $pet->id)}}" class="btn btn-primary btn-sm mr-2">Editar</a>
-                                    <form action="{{ route('pets.destroy', $pet->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button> 
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon="{&quot;rayId&quot;:&quot;7dd8411a7fb916e9&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2023.4.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
-
-
-
-
-
-
-</body>
- 
-
-
-
+@endsection

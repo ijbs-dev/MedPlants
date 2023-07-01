@@ -4,7 +4,7 @@
 <!-- novo começo -->
 
 
- <nav class="p-5 bg-gray-900 text-white shadow md:flex md:items-center md:justify-between">
+<nav class="p-5 bg-gray-900 text-white shadow md:flex md:items-center md:justify-between">
     <div class="flex justify-between items-center ">
       <span style="font-family: sans-serif;" class="text-2xl font-[Poppins] cursor-pointer hover:text-cyan-500 duration-500">
         <img class="h-10 inline"
@@ -53,18 +53,8 @@
         <a href="{{ route('login') }}" id="btn-entrar" class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">Entrar</a>
       @endauth
 
-
-
-<h2 class=""></h2>
     </ul>
   </nav>
-
-
-
-
-
-
-
 
 
   <script>
