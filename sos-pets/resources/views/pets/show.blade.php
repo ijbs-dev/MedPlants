@@ -3,86 +3,153 @@
 @section('titulo', 'Detalhes')
 
 @section('conteudo')
-
-
-    @php
-    {{ $id = 0;
-      if (isset(Auth::user()->id)) {
-        $user = auth()->user();
-        $id = $user->id;
-      }
-    @endphp
-
-@if (isset($mensagem))
-<div class="flex p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
-    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor"
-    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd"
-    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-    <span class="sr-only">Info</span>
-    <div>
-      <span class="font-medium"></span>{{$mensagem}}
+<div style="
+background-image: url('{{ asset('images/patas.webp') }}');
+background-repeat:no-repeat;
+position: relativo;
+height: 100vh;
+width: 100vw;
+background-size: cover;
+overflow: hidden;
+">
+  <div class="relativo mx-auto mt-8 mb-8 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+      <img class="p-8 rounded-t-lg" src="{{ url("storage/{$pet->fotos}") }}" alt="product image" />
+    </a>
+    <div class="px-5 pb-5">
+      <a href="#">
+        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{{$pet->descricao}}</h5>
+      </a>
+      <div class="flex items-center mt-2.5 mb-5">
+        <ul>
+          <li class="text-white">Idade: {{ $pet->idade}}</li>
+          <li class="text-white">Raça: {{ $pet->raca}}</li>
+          @if ($pet->port_id == 1)
+          <li class="text-white">Porte: Pequeno</li>
+          @elseif ($pet->port_id == 2)
+          <li class="text-white">Porte: Médio</li>
+          @elseif ($pet->port_id == 3)
+          <li class="text-white">Porte: Grande</li>
+          @endif
+          @if ($pet->sex_id == 1)
+          <li class="text-white">Sexo: Macho</li>
+          @elseif ($pet->sex_id == 2)
+          <li class="text-white">Sexo: Fêmea</li>
+          @endif
+        </ul>
+      </div>
+      <div class="flex items-center justify-between">
+        <span class="text-3xl font-bold text-gray-900 dark:text-white">{{ $pet->nome }}</span>
+        <button onclick="openModal()" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Agendar</button>
+      </div>
     </div>
   </div>
-@endif
-<section class=" py-12">
-    <div class="container mx-auto flex items-center">
-      <!-- Imagem do produto -->
-      <div class="w-1/2">
-        <img src="{{ url("storage/{$pet->fotos}") }}" alt="Imagem" class="w-full h-auto">
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <h2>Formulário</h2>
+    <form id="myForm">
+      <div class="form-group">
+        <label for="date">Data:</label>
+        <input type="date" id="date" name="date" required>
       </div>
+      <div class="form-group">
+        <label for="time">Hora:</label>
+        <input type="time" id="time" name="time" required>
+      </div>
+      <div class="form-group">
+        <label for="observation">Observação:</label>
+        <textarea id="observation" name="observation" required></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
 
-      <!-- Conteúdo do produto -->
-      <div class="w-1/2 pl-12">
-        <h2 class="text-3xl font-bold mb-4">{{ $pet->nome }}</h2>
+<style>
+  /* Estilos para o modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 
-        <!-- Outros itens -->
-        <ul class="mb-4">
-          <li class="text-gray-700"><span class="text-base font-bold">Idade:</span> {{ $pet->idade }}</li>
-          <li class="text-gray-700"><span class="text-base font-bold">Raça:</span> {{ $pet->raca }}</li>
-          <li class="text-gray-700"><span class="text-base font-bold">Porte:</span>
-         </li>
-          <li class="text-gray-700"><span class="text-base font-bold">Sexo:</span> {{ $pet->sex_id }}</li>
-          <li class="text-gray-700"><span class="text-base font-bold">Descrição:</span> {{ $pet->descricao }}</li>
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+  }
 
-        </ul>
+  /* Estilos para os campos do formulário */
+  .form-group {
+    margin-bottom: 15px;
+  }
 
-        <!-- Botão -->
-        @php
-          $dataAtual = new DateTime();
-            $dataFormatada = $dataAtual->format('Y-m-d');
-        @endphp
-        <form onsubmit="return interromper()" action="{{route('pets.adotar')}}" method="POST">
-            @csrf
-            @if (isset(Auth::user()->id))
-                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-            @endif
-                <input type="hidden" name="pet_id" value="{{$pet->id}}">
-                    <input type="hidden" name="adoption_date" value="{{$dataFormatada}}">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Agendar</button>
-            </form>
-        </div>
-    </div>
-  </section>
+  .form-group label {
+    display: block;
+    font-weight: bold;
+  }
 
-  @if ($id)
-    <script>
-        let userIdLogado = "{{ $id }}";
-        // Outro código JavaScript usando userIdLogado
-    function interromper() {
-      // Obtém os valores dos campos do formulário
-      let userPetId = "{{ $pet->user_id }}";
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 
-      console.log(userPetId,userIdLogado);
+  .form-group textarea {
+    height: 80px;
+  }
 
-      // Compara os valores
-      if (userPetId === userIdLogado) {
-        alert("Voçê não pode agendar o que foi cadastrado por voçê.");
-        return false; // Retorna falso para interromper o envio do formulário
-      }
+  .form-group button {
+    padding: 8px 16px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
 
-      // Caso contrário, o envio do formulário prossegue
-      return true;
+<script>
+  function openModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    var modal = document.getElementById("myModal");
+    if (event.target === modal) {
+      closeModal();
     }
-    </script>
-  @endif
+  };
+
+  var form = document.getElementById("myForm");
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    // Aqui você pode adicionar o código para processar o formulário
+    closeModal();
+  });
+</script>
+
 @endsection

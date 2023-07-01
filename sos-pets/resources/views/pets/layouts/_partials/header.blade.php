@@ -9,7 +9,7 @@
       <span style="font-family: sans-serif;" class="text-2xl font-[Poppins] cursor-pointer hover:text-cyan-500 duration-500">
         <img class="h-10 inline"
           src="{{ asset('images/pata.png')}}">
-        <a href="{{route('pets.index')}}">SosPets</a> 
+        <a href="{{route('pets.index')}}">SosPets</a>
       </span>
 
       <span class="text-3xl cursor-pointer mx-2 md:hidden block">
@@ -52,9 +52,9 @@
         <a href="{{ route('register') }}" class="text-xl hover:text-cyan-500 duration-500" id="btn-cadastrar">Cadastrar</a>
         <a href="{{ route('login') }}" id="btn-entrar" class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">Entrar</a>
       @endauth
-    
 
-   
+
+
 <h2 class=""></h2>
     </ul>
   </nav>
@@ -64,7 +64,7 @@
 
 
 
-  
+
 
 
   <script>
@@ -73,9 +73,9 @@
       e.name === 'menu' ? (e.name = "close",list.classList.add('top-[80px]') , list.classList.add('opacity-100')) :( e.name = "menu" ,list.classList.remove('top-[80px]'),list.classList.remove('opacity-100'))
     }
   </script>
- 
 
 
 
- 
+
+
 
