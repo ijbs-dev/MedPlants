@@ -1,5 +1,5 @@
 
-<footer class="bg-white dark:bg-gray-900 fixed bottom-0 left-0 w-full">
+<footer class="bg-white dark:bg-gray-900 fixed bottom-0 left-0 w-full mt-4">
     <div class="mx-auto max-w-screen-xl p-4 py-6 lg:py-8">
 
       <div class="sm:flex sm:items-center sm:justify-between">
