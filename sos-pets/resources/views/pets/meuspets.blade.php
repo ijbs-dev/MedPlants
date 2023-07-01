@@ -35,9 +35,6 @@
                     Descrição
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Status
-                </th>
-                <th scope="col" class="px-6 py-3">
                     Ações
                 </th>
 
@@ -84,14 +81,8 @@
                 <td class="px-6 py-4">
                     {{$pet->descricao}}
                 </td>
-
                 <td class="px-6 py-4">
-                    <div class="flex items-center">
-                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> {{ $pet->status }}
-                    </div>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                    <a href="{{route('pets.edit',$pet->id)}}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
                     <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remover</a>
                 </td>
             </tr>

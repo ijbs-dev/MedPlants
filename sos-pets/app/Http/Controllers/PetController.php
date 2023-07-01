@@ -59,7 +59,7 @@ class PetController extends Controller
 
         }
         $data['fotos'] = $caminho_imagem;
-        
+
         $register = Pet::create($data);
 
         return redirect()->route('pets.index')->with('success', 'Pet cadastrado com sucesso!');
@@ -87,10 +87,13 @@ class PetController extends Controller
         if (!$pet = Pet::find($id)) {
             return redirect()->route('pets.userPets');
         }
+        $types = Type::all();
+        $ports = Port::all();
+        $sexes = Sex::all();
         //$types = Type::find($pet->type_id);
-        $types = Type::where('id', $pet->type_id)->first();
-        $ports = Port::find($pet->port_id);
-        $sexes = Sex::find($pet->sex_id);
+        // $types = Type::where('id', $pet->type_id)->first();
+        // $ports = Port::find($pet->port_id);
+        // $sexes = Sex::find($pet->sex_id);
 
         return view('pets.edit',compact('pet','types','ports','sexes'));
     }
@@ -118,7 +121,7 @@ class PetController extends Controller
         //Pet::where('id', $id)->update($data);
         $pet->update($data);
 
-        return redirect()->route('pets.meuspets');
+        return redirect()->route('pets.meusPets');
     }
 
     /**
