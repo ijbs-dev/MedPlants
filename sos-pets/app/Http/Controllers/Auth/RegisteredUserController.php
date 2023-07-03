@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Adress;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -30,11 +31,19 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        //$cidade = $request->only('cidade');
+
+        // Agora, $campoSeparado conterá apenas o campo específico do request
+
+        //$data = $request->except('cidade');
+
+        //dd($request);
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'telefone' => ['required'],
+            'cidade' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -43,10 +52,18 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'telefone' => $request->telefone,
             'tipo_usuario' => isset($request->tipo_usuario),
+            'cidade' => $request->cidade,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
+
+         // Salvar o endereço
+         $endereco = new Adress();
+         $endereco->cidade = $request->cidade;
+
+         // Associar o endereço ao usuário
+         $user->adress()->save($endereco);
 
         Auth::login($user);
 

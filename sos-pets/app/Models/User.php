@@ -52,4 +52,9 @@ class User extends Authenticatable
     public function schedule() {
         return $this->hasMany(Schedule::class);
     }
+
+     public function adress()
+    {
+        return $this->hasOne(Adress::class);
+    }
 }

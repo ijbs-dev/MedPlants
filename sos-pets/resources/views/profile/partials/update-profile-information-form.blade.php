@@ -47,6 +47,18 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="telefone" :value="__('Telefone')" />
+            <x-text-input id="telefone" name="telefone" type="text" class="mt-1 block w-full" :value="old('telefone', $user->telefone)" required autofocus autocomplete="telefone" />
+            <x-input-error class="mt-2" :messages="$errors->get('telefone')" />
+        </div>
+
+        <div>
+            <x-input-label for="cidade" :value="__('Cidade')" />
+            <x-text-input id="cidade" name="cidade" type="text" class="mt-1 block w-full" :value="old('cidade', $user->adress->cidade)" required autofocus autocomplete="cidade" />
+            <x-input-error class="mt-2" :messages="$errors->get('cidade')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Salvar') }}</x-primary-button>
 
