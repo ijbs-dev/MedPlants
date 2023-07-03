@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Adress;
+ 
 
 class ProfileController extends Controller
 {
@@ -33,6 +35,14 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+
+        //Atualizar o campo "cidade" no endereço
+        $endereco = new Adress();
+        $endereco->cidade = $request->cidade;
+        
+        // Associar o endereço ao usuário
+        $request->user()->adress()->update(['cidade' => $endereco->cidade]);
+    
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

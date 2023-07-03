@@ -1,6 +1,5 @@
 {{--
 
-
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -21,14 +20,14 @@
 
         <!-- Telefone -->
         <div class="mt-4">
-            <x-input-label for="telefone" :value="__('Telefone')" />
+            <x-input-label for="telefone" :value="__('Telefones')" />
             <x-text-input maxlength="15" onkeyup="handlePhone(event)" id="telefone" class="block mt-1 w-full" type="text" name="telefone" :value="old('telefone')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('telefone')" class="mt-2" />
         </div>
 
         <div class="flex items-center mb-4 mt-4">
              <input id="default-checkbox" type="checkbox" name="tipo_usuario" value="associacao" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-             <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Marque esse campo se voçê for uma instituição</label>
+             <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-100 dark:text-gray-900" style="color:black;">Marque esse campo se voçê for uma instituição</label>
         </div>
 
         <!-- Senha -->
@@ -114,13 +113,19 @@
 
   <div>
     <label for="telefone" :value="__('Telefone')" class="block text-gray-700">Telefone</label>
-    <input maxlength="15" onkeyup="handlePhone(event)" id="telefone" type="text" name="telefone" :value="old('telefone')" required autocomplete="username" placeholder="Digite seu telefone" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+    <input maxlength="15" onkeyup="handlePhone(event)" id="telefone" type="text" name="telefone" :value="old('telefone')" required autocomplete="telefone" placeholder="Digite seu telefone" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
     <x-input-error :messages="$errors->get('telefone')" class="mt-2" />
   </div>
 
-  <div class="flex items-center mb-4 mt-2">
+  <div>
+    <label for="cidade" :value="__('Cidade')" class="block text-gray-700">Cidade</label>
+    <input id="cidade"type="text" name="cidade" :value="old('cidade')" required autofocus autocomplete="name" placeholder="Digite seu nome" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+    <x-input-error :messages="$errors->get('cidade')" class="mt-2" />
+  </div>
+
+  <div class="flex items-center mb-4 mt-4">
     <input id="default-checkbox" type="checkbox" name="tipo_usuario" value="associacao" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-    <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Marque esse campo se voçê for uma instituição</label>
+    <label for="default-checkbox" class="ml-2 text-base font-medium text-gray-100 dark:text-gray-900">Marque esse campo se voçê for uma instituição</label>
 </div>
 
 <div>

@@ -8,6 +8,7 @@ use App\Models\Port;
 use App\Models\Sex;
 use App\Models\User;
 use App\Models\Type;
+use App\Models\Adress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -24,9 +25,13 @@ class PetController extends Controller
     public function index()
     {
 
-        $pets = Pet::all()->reverse();
+         $pets = Pet::with('user.adress')->get();
 
-        return view('pets.index',compact('pets'));
+         return view('pets.index',compact('pets'));
+
+        //$pets = Pet::all()->reverse();
+
+        //return view('pets.index',compact('pets'));
     }
 
     /**
@@ -46,8 +51,9 @@ class PetController extends Controller
     public function store(Request $request)
     {
 
-
         $data = $request->all();
+      
+        
 
         $data['user_id'] = auth()->user()->id;
 
