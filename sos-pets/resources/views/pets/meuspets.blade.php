@@ -83,7 +83,11 @@
                 </td>
                 <td class="px-6 py-4">
                     <a href="{{route('pets.edit',$pet->id)}}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                    <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remover</a>
+                    <form method="post" action="{{ route('pets.destroy', $pet->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remover</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
