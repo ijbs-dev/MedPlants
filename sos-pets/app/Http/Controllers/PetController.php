@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreUpdatePetFormRequest;
 
 class PetController extends Controller
 {
@@ -48,13 +49,13 @@ class PetController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUpdatePetFormRequest $request)
     {
 
-        $data = $request->all();
-      
-        
+       $data = $request->all();
 
+       //$data =  $request->validated();
+      
         $data['user_id'] = auth()->user()->id;
 
         $id = $data['user_id'];
@@ -107,7 +108,7 @@ class PetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdatePetFormRequest $request, $id)
     {
         //$data = $request->only('nome', 'idade', 'especie', 'raca', 'porte', 'sexo', 'descricao');
         if (!$pet = Pet::find($id)) {

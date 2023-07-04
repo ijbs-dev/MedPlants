@@ -11,7 +11,7 @@ class StoreUpdatePetFormRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,35 @@ class StoreUpdatePetFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome' => 'required|string|min:3|max:10',
+            'idade' => 'required',
+            'raca' => 'required|string',
+            'descricao' => 'required|min:3|max:255',
+            'type_id' => 'required',
+            'port_id'=> 'required',
+            'sex_id' => 'required',
+            'fotos' => 'required'
         ];
     }
+
+      public function messages(): array
+    {
+        return [
+            'nome.required' => 'O nome do pet é obrigatório.',
+            'nome.string' => 'O nome deve conter apenas letras.',
+            'nome.min' => 'O nome deve ter no mínimo 3 caracteris.',
+            'nome.max' => 'O nome deve ter no máximo 10 caracteris.',
+            'idade' => 'A idade do pet é obrigatória',
+            'raca.required' => 'A raça do pet é obrigatória.',
+            'raca.string' => 'O campo raça deve conter apenas letras.',
+            'descricao.min' => 'A descrição deve ter no mínimo 3 caracteris.',
+            'descricao.max' => 'A descrição deve ter no máximo 255 caracteris.',
+            'descricao.required' => 'O descriçao do pet é obrigatório.',
+            'type_id.required' => 'O tipo é obrigatório',
+            'port_id.required' => 'O porte é obrigatório',
+            'sex_id.required' => 'O campo sexo é obrigatório',
+            'fotos.required' => 'A foto do pet é obrigatória'
+        ];
+    }
+
 }

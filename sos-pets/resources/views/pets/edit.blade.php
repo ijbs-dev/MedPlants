@@ -55,25 +55,29 @@
           <input
             type="text"
             name="nome"
-            value="{{$pet->nome}}"
+            value="{{ old('nome',$pet->nome)}}"
             placeholder=" "
             required
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
           />
           <label for="nome" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Digite o nome do pet</label>
-          <span class="text-sm text-red-600 hidden" id="error">Name é obrigatório</span>
+          @error('nome')
+            <span class="text-sm text-red-600" id="error">{{ $message }}</span>
+          @enderror
         </div>
 
         <div class="relative z-0 w-full mb-5">
           <input
             type="text"
             name="idade"
-            value="{{$pet->idade}}"
+            value="{{ old('idade',$pet->idade) }}"
             placeholder=" "
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
           />
           <label for="idade" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Digite a idade</label>
-          <span class="text-sm text-red-600 hidden" id="error">Idade é obrigatório</span>
+          @error('idade')
+            <span class="text-sm text-red-600" id="error">{{ $message }}</span>
+          @enderror
         </div>
 
          <div class="relative z-0 w-full mb-5">
@@ -81,44 +85,50 @@
         <select name="type_id" onclick="this.setAttribute('value', this.value);" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200">
             <option disabled selected class="text-gray-400">Selecione o tipo</option>
             @foreach ($types as $type)
-                <option class="text-gray-900" value="{{ $type->id }}" {{ $type->id == $pet->type_id ? 'selected' : '' }}>{{ $type->tipo }}</option>
+                <option class="text-gray-900" value="{{ old('type_id',$pet->type_id)}}" {{ $type->id == $pet->type_id ? 'selected' : '' }}>{{ $type->tipo }}</option>
             @endforeach
         </select>
-
-
-           <span class="text-sm text-red-600 hidden" id="error">Tipo é obrigatório</span>
+            @error('type_id')
+              <span class="text-sm text-red-600" id="error">{{ $message }}</span>
+            @enderror
          </div>
 
           <div class="relative z-0 w-full mb-5">
           <input
             type="text"
             name="raca"
-            value="{{$pet->raca}}"
+            value="{{ old('raca',$pet->raca)}}"
             placeholder=" "
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
           />
           <label for="raca" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Digite a raça</label>
-          <span class="text-sm text-red-600 hidden" id="error">Raça é obrigatório</span>
+          @error('raca')
+            <span class="text-sm text-red-600" id="error">{{ $message }}</span>
+          @enderror
          </div>
 
           <div class="relative z-0 w-full mb-5">
             <select name="port_id" onclick="this.setAttribute('value', this.value);" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                 <option disabled selected class="text-gray-400">Selecione o Porte</option>
                 @foreach ($ports as $port)
-                    <option class="text-gray-900" value="{{ $port->id }}" {{ $port->id == $pet->port_id ? 'selected' : '' }}>{{ $port->porte }}</option>
+                    <option class="text-gray-900" value="{{ old('port_id',$pet->port_id)}}" {{ $port->id == $pet->port_id ? 'selected' : '' }}>{{ $port->porte }}</option>
                 @endforeach
             </select>
-           <span class="text-sm text-red-600 hidden" id="error">Tipo é obrigatório</span>
+            @error('port_id')
+              <span class="text-sm text-red-600" id="error">{{ $message }}</span>
+            @enderror
           </div>
 
            <div class="relative z-0 w-full mb-5">
-            <select name="type_id" onclick="this.setAttribute('value', this.value);" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+            <select name="sex_id" onclick="this.setAttribute('value', this.value);" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                 <option disabled selected class="text-gray-400">Selecione o Sexo</option>
                 @foreach ($sexes as $sex)
-                    <option class="text-gray-900" value="{{ $sex->id }}" {{ $sex->id == $pet->sex_id ? 'selected' : '' }}>{{ $sex->sexo }}</option>
+                    <option class="text-gray-900" value="{{ old('sex_id',$pet->sex_id)}}" {{ $sex->id == $pet->sex_id ? 'selected' : '' }}>{{ $sex->sexo }}</option>
                 @endforeach
             </select>
-           <span class="text-sm text-red-600 hidden" id="error">Sexo do pet é obrigatório</span>
+            @error('sex_id')
+              <span class="text-sm text-red-600" id="error">{{ $message }}</span>
+            @enderror
           </div>
 
            <div class="relative z-0 w-full mb-5">
@@ -129,21 +139,25 @@
             class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
           />
           <label for="fotos" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Escolha uma Imagem</label>
-          <span class="text-sm text-red-600 hidden" id="error">Imagem é obrigatório</span>
+          @error('fotos')
+            <span class="text-sm text-red-600" id="error">{{ $message }}</span>
+          @enderror
          </div>
 
          <div class="relative z-0 w-full mb-5" style="margin-top: 20px;">
               <textarea class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" name="descricao" id="message" placeholder="Descrição *" data-sb-validations="required">
-                {{ $pet->descricao }}
+                {{ old('descricao',$pet->descricao)}}
               </textarea>
-              <span class="text-sm text-red-600 hidden" id="error">Descrição é obrigatório</span>
+              @error('descricao')
+                <span class="text-sm text-red-600" id="error">{{ $message }}</span>
+              @enderror
           </div>
 
         <button
           id="button"
           type="submit"
           class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none">
-          Cadastrar
+          Editar
         </button>
       </form>
     </div>
