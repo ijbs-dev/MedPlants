@@ -28,7 +28,7 @@ Route::put('/pets/editar/{id}',[PetController::class,'update'])->name('pets.upda
 
 Route::post('/pets/agendar',[PetController::class,'agendar'])->middleware('auth')->name('pets.agendar');
 
-Route::get('/agendamentos',[PetController::class,'agendamento'])->name('pets.agendamentos');
+Route::get('/agendamentos',[PetController::class,'agendamentos'])->name('pets.agendamentos');
 
 Route::get('/contatos',[PetController::class,'contatos'])->name('pets.contatos');
 

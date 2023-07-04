@@ -55,7 +55,7 @@ class PetController extends Controller
        $data = $request->all();
 
        //$data =  $request->validated();
-      
+
         $data['user_id'] = auth()->user()->id;
 
         $id = $data['user_id'];
@@ -184,34 +184,9 @@ class PetController extends Controller
         return view('pets.show', compact('pet','mensagem')); */
     }
 
-    public function agendamento(){
+    public function agendamento(Request $request){
 
-        $agenda;
-        $pet = Pet::with('user')->where('id',$petId);
-        //$agenda = Adopt::create($data);
-
-        //return redirect()->route('pets.agendamentos', compact('agenda'))->with('success', 'Visita agendada com sucesso');
-        return view('pets.agendamentos', compact('agenda'));
-
-        // $userId = Auth::id();
-
-        // $agendaUsers = Adopt::with('user')
-        //     ->where('user_id', $userId)
-        //     ->get()
-        //     ->reverse();
-
-        // $agendaPets = Adopt::with('pet')
-        //     ->where('user_id', $userId)
-        //     ->get()
-        //     ->reverse();
-
-        // $agendaData = [
-        //     'users' => $agendaUsers,
-        //     'pets' => $agendaPets,
-        // ];
-
-
-        //return view('pets.agendamentos', compact('agendaData'));
+        dd($request->all());
     }
 
     public function contatos()

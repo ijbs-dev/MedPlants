@@ -50,7 +50,8 @@ overflow: hidden;
 <div id="myModal" class="modal">
   <div class="modal-content">
     <h2>Formulário</h2>
-    <form id="myForm">
+    <form id="myForm" method="POST" action="{{route('pets.agendamentos')}}">
+        @csrf
       <div class="form-group">
         <label for="date">Data:</label>
         <input type="date" id="date" name="date" required>
