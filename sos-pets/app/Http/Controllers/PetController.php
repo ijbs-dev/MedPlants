@@ -186,7 +186,19 @@ class PetController extends Controller
 
     public function agendamento(Request $request){
 
-        dd($request->all());
+    $data = $request->json()->all();
+
+    // Acessar os dados recebidos em formato JSON
+    // Exemplo de acesso a campos específicos
+    $date = $data['date'];
+    $time = $data['time'];
+    $observation = $data['observation'];
+
+    // Outras ações que você deseja realizar com os dados
+
+    dd($data); // Exibir os dados recebidos
+
+    // Resto do seu código
     }
 
     public function contatos()

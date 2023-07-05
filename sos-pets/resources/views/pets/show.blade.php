@@ -50,8 +50,7 @@ overflow: hidden;
 <div id="myModal" class="modal">
   <div class="modal-content">
     <h2>Formulário</h2>
-    <form id="myForm" method="POST" action="{{route('pets.agendamentos')}}">
-        @csrf
+    <form id="myForm">
       <div class="form-group">
         <label for="date">Data:</label>
         <input type="date" id="date" name="date" required>
@@ -127,6 +126,8 @@ overflow: hidden;
   }
 </style>
 
+
+
 <script>
   function openModal() {
     var modal = document.getElementById("myModal");
@@ -145,12 +146,44 @@ overflow: hidden;
     }
   };
 
-  var form = document.getElementById("myForm");
-  form.addEventListener("submit", function(event) {
+  jQuery(document).ready(function() {
+  jQuery("#myForm").submit(function(event) {
     event.preventDefault();
-    // Aqui você pode adicionar o código para processar o formulário
-    closeModal();
-  });
-</script>
 
+    var date = jQuery("#date").val();
+    var time = jQuery("#time").val();
+    var observation = jQuery("#observation").val();
+
+    var data = {
+      date: date,
+      time: time,
+      observation: observation
+    };
+
+    jQuery.ajax({
+      url: "{{ route('pets.agendamentos') }}",
+      type: "POST",
+      headers: {
+        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+      },
+      data: JSON.stringify(data),
+      contentType: "application/json",
+      success: function(response) {
+        // A solicitação foi bem-sucedida
+        // Você pode adicionar aqui qualquer lógica adicional após o envio do formulário
+        closeModal();
+      },
+      error: function(xhr, status, error) {
+        // A solicitação falhou
+        console.log("Ocorreu um erro ao enviar o formulário:", error);
+      }
+    });
+  });
+});
+
+
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @endsection
