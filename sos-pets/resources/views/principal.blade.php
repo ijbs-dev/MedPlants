@@ -22,7 +22,7 @@
 
     @include('pets.layouts._partials.header')
 
-    <div class="mx-auto">
+    <div>
         @yield('conteudo')
     </div>
 

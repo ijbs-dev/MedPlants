@@ -184,21 +184,19 @@ class PetController extends Controller
         return view('pets.show', compact('pet','mensagem')); */
     }
 
-    public function agendamento(Request $request){
+    public function agendamentos(Request $request){
 
-    $data = $request->json()->all();
+    // $data = $request->json()->all();
 
-    // Acessar os dados recebidos em formato JSON
-    // Exemplo de acesso a campos específicos
-    $date = $data['date'];
-    $time = $data['time'];
-    $observation = $data['observation'];
+    // $date = $data['date'];
+    // $time = $data['time'];
+    // $observation = $data['observation'];
 
-    // Outras ações que você deseja realizar com os dados
 
-    dd($data); // Exibir os dados recebidos
+    // dd($data); // Exibir os dados recebidos
 
     // Resto do seu código
+    return view('pets.agendamentos');
     }
 
     public function contatos()
