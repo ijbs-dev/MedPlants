@@ -186,17 +186,16 @@ class PetController extends Controller
 
     public function agendamentos(Request $request){
 
-    // $data = $request->json()->all();
+    
 
-    // $date = $data['date'];
-    // $time = $data['time'];
-    // $observation = $data['observation'];
+    // Definir a flash message
+    //session()->flash('success', 'Agendamento feito com sucesso!');
 
+    // Redirecionar de volta para a página anterior
+    //return redirect()->back();
 
-    // dd($data); // Exibir os dados recebidos
-
-    // Resto do seu código
     return view('pets.agendamentos');
+    
     }
 
     public function contatos()
