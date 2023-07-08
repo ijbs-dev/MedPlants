@@ -20,23 +20,23 @@
     <ul class="text-white md:text-white md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-gray-900 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
       @auth
       <li class="mx-4 my-6 md:my-0">
-        <a href="{{ route('pets.create') }}" class="text-xl hover:text-cyan-500 duration-500">Cadastrar Pet</a>
+        <a href="{{ route('pets.create') }}" class="text-md hover:text-cyan-500 duration-500">Cadastrar Pet</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="{{ route('pets.meusPets') }}" class="text-xl hover:text-cyan-500 duration-500">Meus Pets</a>
+        <a href="{{ route('pets.meusPets') }}" class="text-md hover:text-cyan-500 duration-500">Meus Pets</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="{{ route('pets.agendamentos') }}" class="text-xl hover:text-cyan-500 duration-500">Meus Agendamentos</a>
+        <a href="{{ route('pets.agendamentos') }}" class="text-md hover:text-cyan-500 duration-500">Meus Agendamentos</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="{{ route('pets.validar-agendamentos') }}" class="text-xl hover:text-cyan-500 duration-500">Validar Agendamentos</a>
+        <a href="{{ route('pets.validar-agendamentos') }}" class="text-md hover:text-cyan-500 duration-500">Validar Agendamentos</a>
       </li>
       @endauth
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Sobre</a>
+        <a href="#" class="text-md hover:text-cyan-500 duration-500">Sobre</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="{{ route('pets.contatos') }}" class="text-xl hover:text-cyan-500 duration-500">Contato</a>
+        <a href="{{ route('pets.contatos') }}" class="text-md hover:text-cyan-500 duration-500">Contato</a>
       </li>
 
       @auth
