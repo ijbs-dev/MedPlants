@@ -26,7 +26,10 @@
         <a href="{{ route('pets.meusPets') }}" class="text-xl hover:text-cyan-500 duration-500">Meus Pets</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="{{ route('pets.agendamentos') }}" class="text-xl hover:text-cyan-500 duration-500">Agendamentos</a>
+        <a href="{{ route('pets.agendamentos') }}" class="text-xl hover:text-cyan-500 duration-500">Meus Agendamentos</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="{{ route('pets.validar-agendamentos') }}" class="text-xl hover:text-cyan-500 duration-500">Validar Agendamentos</a>
       </li>
       @endauth
       <li class="mx-4 my-6 md:my-0">

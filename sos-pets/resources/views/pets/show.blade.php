@@ -57,7 +57,7 @@ overflow: hidden;
 <!-- component -->
 
     <!-- Container -->
-    <div class="mx-auto" 
+    <div class="mx-auto"
     style="
     background-image: url('{{ asset('images/patas.webp') }}');
     background-repeat:no-repeat;
@@ -148,12 +148,12 @@ overflow: hidden;
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
                   Observação
                 </label>
-                <textarea required 
+                <textarea required
                   class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   name="observation"
                 ></textarea>
               </div>
-             
+
               <div class="mb-6 text-center">
                 <button
                   class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"

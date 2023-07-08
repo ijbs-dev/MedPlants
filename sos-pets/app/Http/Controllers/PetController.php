@@ -69,7 +69,7 @@ class PetController extends Controller
 
         $image_path = $request->file('fotos')->store('pets', 'public');
         $data['fotos'] = $image_path;
-        
+
         $register = Pet::create($data);
 
         return redirect()->route('pets.index')->with('success', 'Pet cadastrado com sucesso!');
@@ -161,6 +161,13 @@ class PetController extends Controller
         $user = User::find($id);
         $meusPets = $user->pets()->latest()->get();
 
+        $schedule = Schedule::find($id);
+        if($schedule){
+            $idDonoDoPet = $schedule->pet->user_id;
+            return view('pets.meuspets', compact('meusPets','idDonoDoPet'));
+        }
+        // $usuarioDonoDoPet = $schedule->pet->user_id;
+
         return view('pets.meuspets', compact('meusPets'));
     }
 
@@ -205,6 +212,18 @@ class PetController extends Controller
 
          // Exibe os dados na view
          return view('pets.agendamentos', ['schedules' => $schedules]);
+    }
+
+    public function validarAgendamentos(Request $request)
+    {
+        // Obtém o usuário logado
+        $usuarioLogado = Auth::user();
+
+        // Obtém todos os registros da tabela "Schedule" que pertencem ao usuário logado
+         $schedules = Schedule::where('user_id', $usuarioLogado->id)->get();
+
+         // Exibe os dados na view
+         return view('pets.validar-agendamentos', ['schedules' => $schedules]);
     }
 
     public function contatos()

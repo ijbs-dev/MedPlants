@@ -35,6 +35,9 @@
                     Descrição
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Stuação
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Ações
                 </th>
 
@@ -82,12 +85,22 @@
                     {{$pet->descricao}}
                 </td>
                 <td class="px-6 py-4">
+                    {{$pet->situacao}}
+                </td>
+                <td class="px-6 py-4">
                     <a href="{{route('pets.edit',$pet->id)}}" class="mr-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
                     <form method="post" action="{{ route('pets.destroy', $pet->id) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remover</button>
                     </form>
+                    @if (isset($idDonoDoPet))
+                    <form method="post" action="{{ route('pets.destroy', $pet->id) }}">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="font-medium text-green-600 dark:text-green-500 hover:underline">Confirmar Adoção</button>
+                    </form>
+                    @endif
                 </td>
             </tr>
             @endforeach
