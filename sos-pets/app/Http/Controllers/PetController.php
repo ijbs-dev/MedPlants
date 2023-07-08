@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUpdatePetFormRequest;
-use Intervention\Image\Facades\Image;
 
 class PetController extends Controller
 {
@@ -210,20 +209,32 @@ class PetController extends Controller
         // Obtém todos os registros da tabela "Schedule" que pertencem ao usuário logado
          $schedules = Schedule::where('user_id', $usuarioLogado->id)->get();
 
+         $schedules = Schedule::with('pet', 'user')->get();
+
+         foreach ($schedules as $schedule) {
+           $nomePet = $schedule->pet->nome; // Acesse o nome do pet
+           $nomeUsuario = $schedule->user->name; // Acesse o nome do usuário
+           // Faça algo com o nomePet e nomeUsuario
+        }
+
+        //dd($nomeUsuario);
+
+
          // Exibe os dados na view
          return view('pets.agendamentos', ['schedules' => $schedules]);
     }
 
     public function validarAgendamentos(Request $request)
     {
-        // Obtém o usuário logado
-        $usuarioLogado = Auth::user();
+        $usuarioId = Auth::id();
 
-        // Obtém todos os registros da tabela "Schedule" que pertencem ao usuário logado
-         $schedules = Schedule::where('user_id', $usuarioLogado->id)->get();
+       $pets = Pet::where('user_id', $usuarioId)->pluck('id');
 
-         // Exibe os dados na view
-         return view('pets.validar-agendamentos', ['schedules' => $schedules]);
+       $agendamentos = Schedule::whereIn('pet_id', $pets)->get();
+
+       dd($agendamentos);
+
+       return view('validar-agendamentos', ['agendamentos' => $agendamentos]);
     }
 
     public function contatos()
