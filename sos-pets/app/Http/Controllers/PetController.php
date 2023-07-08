@@ -9,11 +9,13 @@ use App\Models\Sex;
 use App\Models\User;
 use App\Models\Type;
 use App\Models\Adress;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUpdatePetFormRequest;
+use Intervention\Image\Facades\Image;
 
 class PetController extends Controller
 {
@@ -60,13 +62,14 @@ class PetController extends Controller
 
         $id = $data['user_id'];
 
-        //checa se a imagem veio na requisição e se houve erro no upload
-        if ($request->hasFile('fotos') || $request->fotos->isValid()) {
-            $caminho_imagem =  $request->fotos->store("pets", "public");
+        // if ($request->hasFile('fotos') || $request->fotos->isValid()) {
+        //     $caminho_imagem =  $request->fotos->store("pets", "public");
+        // }
+        // $data['fotos'] = $caminho_imagem;
 
-        }
-        $data['fotos'] = $caminho_imagem;
-
+        $image_path = $request->file('fotos')->store('pets', 'public');
+        $data['fotos'] = $image_path;
+        
         $register = Pet::create($data);
 
         return redirect()->route('pets.index')->with('success', 'Pet cadastrado com sucesso!');
@@ -161,41 +164,47 @@ class PetController extends Controller
         return view('pets.meuspets', compact('meusPets'));
     }
 
-    public function agendar(Request $request)
+    public function agendamentos(Request $request)
     {
-        $data = $request->all();
-        $petId = $data['pet_id'];
-        $pet = Pet::with('user')->where('id',$petId);
-        $agenda = Adopt::create($data);
 
-        //return redirect()->route('pets.agendamentos', compact('agenda'))->with('success', 'Visita agendada com sucesso');
-        return view('pets.agendamentos', compact('agenda'));
-        /* $id = $data['pet_id'];
+       $usuarioLogadoId = Auth::id();
+       $petId = $request->input('pet_id');
 
-        $pet = Pet::find($id);
 
-        $register = Adopt::create($data);
-        DB::table('pets')
-        ->where('id', $id)
-        ->update(['status' => 'aguardando']);
-        //return redirect()->back();
-        //return redirect()->route('pets.show', compact('pet'))->with('success', 'Pet excluído com sucesso!');
-        $mensagem="Agendamento realizado com sucesso!";
-        return view('pets.show', compact('pet','mensagem')); */
+    // Verifique se o ID do usuário logado é o mesmo que o ID do proprietário do animal de estimação
+    $pet = Pet::findOrFail($petId);
+
+
+    if ($pet->user_id == $usuarioLogadoId) {
+        return back()->with('error', 'Você não pode adotar seu próprio animal de estimação!');
     }
 
-    public function agendamentos(Request $request){
+    $agendamentoExistente = DB::table('schedules')
+        ->where('pet_id', $petId)
+        ->exists();
 
-    
+    if ($agendamentoExistente) {
+        return back()->with('error', 'Este pet já está agendado.');
+    }
 
-    // Definir a flash message
-    //session()->flash('success', 'Agendamento feito com sucesso!');
 
-    // Redirecionar de volta para a página anterior
-    //return redirect()->back();
+    $data = $request->all();
+    Schedule::create($data);
 
-    return view('pets.agendamentos');
-    
+
+    return redirect()->route('pets.agendamentos')->with('sucesso','Agendamento feito com sucesso');
+    }
+
+    public function meusAgendamentos(Request $request)
+    {
+        // Obtém o usuário logado
+        $usuarioLogado = Auth::user();
+
+        // Obtém todos os registros da tabela "Schedule" que pertencem ao usuário logado
+         $schedules = Schedule::where('user_id', $usuarioLogado->id)->get();
+
+         // Exibe os dados na view
+         return view('pets.agendamentos', ['schedules' => $schedules]);
     }
 
     public function contatos()

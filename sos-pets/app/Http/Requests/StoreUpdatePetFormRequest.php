@@ -29,7 +29,7 @@ class StoreUpdatePetFormRequest extends FormRequest
             'type_id' => 'required',
             'port_id'=> 'required',
             'sex_id' => 'required',
-            'fotos' => 'required'
+            'fotos' =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ];
     }
 
@@ -49,7 +49,10 @@ class StoreUpdatePetFormRequest extends FormRequest
             'type_id.required' => 'O tipo é obrigatório',
             'port_id.required' => 'O porte é obrigatório',
             'sex_id.required' => 'O campo sexo é obrigatório',
-            'fotos.required' => 'A foto do pet é obrigatória'
+            'fotos.required' => 'A foto do pet é obrigatória',
+            'fotos.image' => 'Este arquivo não é uma imagem',
+            'fotos.max' => 'Esta imagem excede o tamanho máximo permitido que é de 2040',
+            'fotos.mimes' => "Só esses tipos de imagens jpg, png, jpeg"
         ];
     }
 

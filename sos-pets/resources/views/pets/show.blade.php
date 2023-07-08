@@ -3,6 +3,8 @@
 @section('titulo', 'Detalhes')
 
 @section('conteudo')
+
+
 <!-- <div style="
 background-image: url('{{ asset('images/patas.webp') }}');
 background-repeat:no-repeat;
@@ -46,6 +48,10 @@ overflow: hidden;
   </div>
 </div> -->
 
+@if(session('error'))
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800     dark:text-red-400" role="alert"> {{ session('error') }}
+    </div>
+@endif
 
 
 <!-- component -->
@@ -107,7 +113,11 @@ overflow: hidden;
           <!-- Col -->
           <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none mb-8">
             <h3 class="pt-4 text-2xl text-center">Agende uma visita para adotar o pet</h3>
-            <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+            <form action="{{ route('pets.agendamentos') }}" class="px-8 pt-6 pb-8 mb-4 bg-white rounded" method="POST">
+              @csrf
+              <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+              <input type="hidden" name="pet_id" value="{{ $pet->id }}">
+              <input type="hidden" name="status" value="Aguardando">
               <div class="mb-4">
                 <label class="block mb-2 text-sm font-bold text-gray-700" for="username">
                   Data
@@ -116,7 +126,7 @@ overflow: hidden;
                   class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                   id="username"
                   type="date"
-                  name="data"
+                  name="adoption_date"
                   placeholder="Data"
                   required
                 />
@@ -127,9 +137,8 @@ overflow: hidden;
                 </label>
                 <input
                   class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                  id="password"
-                  name="hora"
-                  type="password"
+                  name="hour"
+                  type="time"
                   placeholder=""
                   required
                 />
@@ -148,12 +157,12 @@ overflow: hidden;
               <div class="mb-6 text-center">
                 <button
                   class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                  type="button"
+                  type="submit"
                 >
                   Agendar
                 </button>
               </div>
-              <hr class="mb-6 border-t" />
+              <hr class="pointer mb-6 border-t" />
               </div>
             </form>
           </div>

@@ -19,6 +19,7 @@ Route::delete('/pets/excluir/{id}',[PetController::class,'destroy'])->name('pets
 
 Route::get('/', [PetController::class,'index'])->name('pets.index');
 
+
 Route::get('/pets/create',[PetController::class,'create'])->middleware('auth')->name('pets.create');
 Route::get('/pets/editar/{id}',[PetController::class,'edit'])->middleware('auth')->name('pets.edit');
 Route::post('/pets/store',[PetController::class,'store'])->middleware('auth')->name('pets.store');
@@ -28,7 +29,9 @@ Route::put('/pets/editar/{id}',[PetController::class,'update'])->name('pets.upda
 
 Route::post('/pets/agendar',[PetController::class,'agendar'])->middleware('auth')->name('pets.agendar');
 
-Route::get('/agendamentos',[PetController::class,'agendamentos'])->name('pets.agendamentos');
+Route::get('/agendamentos',[PetController::class,'meusAgendamentos'])->middleware('auth')->name('pets.agendamentos');
+
+Route::post('/agendamentos',[PetController::class,'agendamentos'])->middleware('auth')->name('pets.agendamentos');
 
 Route::get('/contatos',[PetController::class,'contatos'])->name('pets.contatos');
 
