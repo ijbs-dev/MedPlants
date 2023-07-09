@@ -180,6 +180,8 @@ class PetController extends Controller
     // Verifique se o ID do usuário logado é o mesmo que o ID do proprietário do animal de estimação
     $pet = Pet::findOrFail($petId);
 
+    $pet->situacao = 'aguardando';
+    $pet->save();
 
     if ($pet->user_id == $usuarioLogadoId) {
         return back()->with('error', 'Você não pode adotar seu próprio animal de estimação!');
@@ -244,8 +246,9 @@ class PetController extends Controller
 
     public function confirmarAgendamentos(Request $request)
     {
-        $id = $request->user_id;
-        $agendamento = Schedule::find($id);
+        $user_id = $request->user_id;
+        $agendamento = Schedule::where('user_id', $user_id)->first();;
+        
         $agendamento->update([
             'status' => $request->status
         ]);
