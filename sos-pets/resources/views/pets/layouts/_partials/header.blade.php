@@ -33,7 +33,7 @@
       </li>
       @endauth
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-md hover:text-cyan-500 duration-500">Sobre</a>
+        <a href="{{ route('pets.sobre') }}" class="text-md hover:text-cyan-500 duration-500">Sobre</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="{{ route('pets.contatos') }}" class="text-md hover:text-cyan-500 duration-500">Contato</a>

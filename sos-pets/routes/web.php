@@ -38,7 +38,7 @@ Route::patch('/agendamentos/confirmar',[PetController::class,'ConfirmarAgendamen
 Route::post('/agendamentos',[PetController::class,'agendamentos'])->middleware('auth')->name('pets.agendamentos');
 
 Route::get('/contatos',[PetController::class,'contatos'])->name('pets.contatos');
-
+Route::get('/sobre',[PetController::class,'sobre'])->name('pets.sobre');
 
 
 //Route::get('/agendar', 'AgendamentoController@index');
