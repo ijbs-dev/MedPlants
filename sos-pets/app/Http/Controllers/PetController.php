@@ -248,7 +248,7 @@ class PetController extends Controller
     {
         $user_id = $request->user_id;
         $agendamento = Schedule::where('user_id', $user_id)->first();;
-        
+
         $agendamento->update([
             'status' => $request->status
         ]);
@@ -258,5 +258,9 @@ class PetController extends Controller
     public function contatos()
     {
         return view('pets.contatos');
+    }
+    public function sobre()
+    {
+        return view('pets.sobre');
     }
 }
