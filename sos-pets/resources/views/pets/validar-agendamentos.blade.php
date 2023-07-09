@@ -23,21 +23,30 @@
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
 
         <!-- card1 -->
-        @foreach($schedules as $schedule)
+
+        @foreach($agendamentos as $agendamento)
         <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
-                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Data:</span> <span class="text-xl">{{ $schedule->adoption_date }}</span></h5>
+            <p class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Adotante:</span>{{ $agendamento->user->name }}</p>
 
-            <p class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Hora:</span>{{ $schedule->hour }}</p>
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Data:</span> <span class="text-xl">{{ $agendamento->adoption_date }}</span></h5>
 
-             <p class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Status: </span>{{ $schedule->status }}</p>
+            <p class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Hora:</span>{{ $agendamento->hour }}</p>
 
-            <p class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Obeservação:</span> <span>{{ $schedule->observation }}</span></p>
-            @if ($schedule->status !== 'Aguardando')
-            <a href="#" class="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+             <p class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Status: </span>{{ $agendamento->status }}</p>
+
+            <p class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-blue-500">Obeservação:</span> <span>{{ $agendamento->observation }}</span></p>
+            <form action="{{ route('pets.confirmar-agendamentos') }}" method="POST">
+                @csrf
+                @method('PATCH')
+            @if ($agendamento->status == 'Aguardando')
+            <input type="hidden" name="status" value="Confirmado">
+            <input type="hidden" name="user_id" value="{{$agendamento->user_id}}">
+            <button type="submit" class="mt-4 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Confirmar
-            </a>
+            </button>
             @endif
+        </form>
         </div>
         @endforeach
     </div>

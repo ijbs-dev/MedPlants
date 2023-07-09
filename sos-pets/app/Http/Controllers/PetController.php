@@ -204,20 +204,21 @@ class PetController extends Controller
     public function meusAgendamentos(Request $request)
     {
         // Obtém o usuário logado
-        $usuarioLogado = Auth::user();
+        $usuarioLogado = Auth::id();
 
         // Obtém todos os registros da tabela "Schedule" que pertencem ao usuário logado
-         $schedules = Schedule::where('user_id', $usuarioLogado->id)->get();
+        //  $schedules = Schedule::where('user_id', $usuarioLogado->id)->get();
+        $schedules = Schedule::where('user_id', $usuarioLogado)->with('pet', 'user')->get();
 
-         $schedules = Schedule::with('pet', 'user')->get();
+        //  $schedules = Schedule::with('pet', 'user')->get();
 
-         foreach ($schedules as $schedule) {
-           $nomePet = $schedule->pet->nome; // Acesse o nome do pet
-           $nomeUsuario = $schedule->user->name; // Acesse o nome do usuário
+        //  foreach ($schedules as $schedule) {
+        //    $nomePet = $schedule->pet->nome; // Acesse o nome do pet
+        //    $nomeUsuario = $schedule->user->name; // Acesse o nome do usuário
            // Faça algo com o nomePet e nomeUsuario
-        }
+        // }
 
-        //dd($nomeUsuario);
+        // dd($schedule);
 
 
          // Exibe os dados na view
@@ -232,9 +233,23 @@ class PetController extends Controller
 
        $agendamentos = Schedule::whereIn('pet_id', $pets)->get();
 
-       dd($agendamentos);
+        foreach ($agendamentos as $agendamento) {
+            // $nomePet = $schedule->pet->nome; // Acesse o nome do pet
+            $nomeUsuario = $agendamento->user->name; // Acesse o nome do usuário
+        // Faça algo com o nomePet e nomeUsuario
+        $agendamentos->name = $nomeUsuario;
+        }
+       return view('pets.validar-agendamentos', ['agendamentos' => $agendamentos]);
+    }
 
-       return view('validar-agendamentos', ['agendamentos' => $agendamentos]);
+    public function confirmarAgendamentos(Request $request)
+    {
+        $id = $request->user_id;
+        $agendamento = Schedule::find($id);
+        $agendamento->update([
+            'status' => $request->status
+        ]);
+        return back()->with('sucesso', 'Agendamento confirmado com sucesso.');
     }
 
     public function contatos()
