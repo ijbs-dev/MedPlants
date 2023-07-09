@@ -85,41 +85,40 @@
 <x-guest-layout>
 <section class="flex flex-col md:flex-row h-screen items-center">
 
-    <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
+    <div class="bg-indigo-600 lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
 <img src="images/gato_cao.jpg"  alt="" class="w-full h-full object-cover">
     </div>
 
-<div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+<div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2
+ xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
   flex items-center justify-center">
 
 <div class="w-full h-100">
 
-    <h1 class="text-xl md:text-2xl font-bold leading-tight mt-4">Faça seu cadastro</h1>
-
-<form class="mt-2" action="#" method="POST" action="{{ route('register') }}">
+<form class="mt-12" action="#" method="POST" action="{{ route('register') }}">
 @csrf
   <div>
     <label for="name" :value="__('Nome')" class="block text-gray-700">Nome</label>
-    <input id="name"type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Digite seu nome" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+    <input id="name"type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Digite seu nome" class="w-full h-8 py-2 leading-tight rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
     <x-input-error :messages="$errors->get('name')" class="mt-2" />
   </div>
 
   <div class="mt-2">
     <label for="email" :value="__('E-mail')" class="block text-gray-700">E-mail</label>
-    <input type="email" name="email" :value="old('email')" required autocomplete="username" id="email" placeholder="Digite seu email" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+    <input type="email" name="email" :value="old('email')" required autocomplete="username" id="email" placeholder="Digite seu email" minlength="6" class="w-full h-8 py-2 leading-tight rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
           focus:bg-white focus:outline-none" required>
           <x-input-error :messages="$errors->get('email')" class="mt-2" />
   </div>
 
   <div>
     <label for="telefone" :value="__('Telefone')" class="block text-gray-700">Telefone</label>
-    <input maxlength="15" onkeyup="handlePhone(event)" id="telefone" type="text" name="telefone" :value="old('telefone')" required autocomplete="telefone" placeholder="Digite seu telefone" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+    <input maxlength="15" onkeyup="handlePhone(event)" id="telefone" type="text" name="telefone" :value="old('telefone')" required autocomplete="telefone" placeholder="Digite seu telefone" class="w-full h-8 py-2 leading-tight rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
     <x-input-error :messages="$errors->get('telefone')" class="mt-2" />
   </div>
 
   <div>
     <label for="cidade" :value="__('Cidade')" class="block text-gray-700">Cidade</label>
-    <input id="cidade"type="text" name="cidade" :value="old('cidade')" required autofocus autocomplete="name" placeholder="Digite seu nome" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+    <input id="cidade"type="text" name="cidade" :value="old('cidade')" required autofocus autocomplete="name" placeholder="Digite seu nome" class="w-full h-8 py-2 leading-tight rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
     <x-input-error :messages="$errors->get('cidade')" class="mt-2" />
   </div>
 
@@ -132,14 +131,14 @@
     <label for="password" :value="__('Senha')" class="block text-gray-700">Senha</label>
     <input type="password"
     name="password"
-    required autocomplete="new-password" id="password" placeholder="*******" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+    required autocomplete="new-password" id="password" placeholder="*******" class="w-full h-8 py-2 leading-tight rounded-lg bg-gray-200  border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
     <x-input-error :messages="$errors->get('password')" class="mt-2" />
   </div>
 
   <div>
     <label for="password_confirmation" :value="__('Confirmação De Senha')" class="block text-gray-700">Confirme sua senha</label>
     <input type="password" id="password_confirmation"
-    name="password_confirmation" required autocomplete="new-password" placeholder="*******" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+    name="password_confirmation" required autocomplete="new-password" placeholder="*******" class="w-full h-8 py-2 leading-tight rounded-lg bg-gray-200 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
   </div>
 
@@ -157,7 +156,7 @@
 
 <hr class="my-6 border-gray-300 w-full">
 
-<p class="mt-2">Já possui cadastro? <a href="{{ route('login') }}"
+<p class="mb-12">Já possui cadastro? <a href="{{ route('login') }}"
     class="text-blue-500 hover:text-blue-700 font-semibold">Entrar</a></p>
 
 </div>
