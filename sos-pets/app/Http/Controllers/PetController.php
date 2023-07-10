@@ -27,13 +27,12 @@ class PetController extends Controller
     public function index()
     {
 
-         $pets = Pet::with('user.adress')->get();
+        //  $pets = Pet::with('user.adress')->get();
 
-         return view('pets.index',compact('pets'));
+        //  return view('pets.index',compact('pets'));
+        $pets = Pet::with('user.adress')->where('situacao', '!=', 'Adotado')->get();
+        return view('pets.index', compact('pets'));
 
-        //$pets = Pet::all()->reverse();
-
-        //return view('pets.index',compact('pets'));
     }
 
     /**
@@ -246,13 +245,35 @@ class PetController extends Controller
 
     public function confirmarAgendamentos(Request $request)
     {
-        $user_id = $request->user_id;
-        $agendamento = Schedule::where('user_id', $user_id)->first();;
+        // $user_id = $request->user_id;
+        // $agendamento = Schedule::where('user_id', $user_id)->first();;
 
-        $agendamento->update([
-            'status' => $request->status
-        ]);
+        // $agendamento->update([
+        //     'status' => $request->status
+        // ]);
+        // return back()->with('sucesso', 'Agendamento confirmado com sucesso.');
+        $pet_id = $request->pet_id;
+        $user_id = $request->user_id;
+
+        $agendamento = Schedule::where('pet_id', $pet_id)
+                                ->where('user_id', $user_id)
+                                ->update(['status' => $request->status]);
+
         return back()->with('sucesso', 'Agendamento confirmado com sucesso.');
+}
+
+    public function confirmarAdocao(Request $request)
+    {
+        $pet_id = $request->id;
+
+        $adocao = Pet::find($pet_id);
+
+        if ($adocao) {
+            $adocao->situacao = $request->situacao;
+            $adocao->save();
+
+            return back()->with('success', 'Adoção concluída com sucesso.');
+        }
     }
 
     public function contatos()

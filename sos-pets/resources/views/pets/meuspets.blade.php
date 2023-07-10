@@ -4,6 +4,11 @@
 
 @section('conteudo')
 
+@if(session('success'))
+    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-green-400" role="alert"> {{ session('success') }}
+    </div>
+@endif
+
 <h3 class="text-4xl font-normal leading-normal mt-8 mb-8 text-teal-800 text-center">
     Meus Pets
 </h3>
@@ -94,10 +99,13 @@
                         @method('DELETE')
                         <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remover</button>
                     </form>
-                    @if (isset($idDonoDoPet))
-                    <form method="post" action="{{ route('pets.destroy', $pet->id) }}">
+                    @if ($pet->situacao == 'aguardando')
+                    <form method="post" action="{{ route('pets.confirmar-adocao') }}">
                         @csrf
-                        @method('PUT')
+                        @method('PATCH')
+                        <input type="hidden" name="situacao" value="Adotado">
+                        <input type="hidden" name="user_id" value="{{ $pet->user_id }}">
+                        <input type="hidden" name="id" value="{{ $pet->id }}">
                         <button type="submit" class="font-medium text-green-600 dark:text-green-500 hover:underline">Confirmar Adoção</button>
                     </form>
                     @endif

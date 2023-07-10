@@ -35,6 +35,7 @@ Route::get('/agendamentos/validar',[PetController::class,'validarAgendamentos'])
 
 Route::patch('/agendamentos/confirmar',[PetController::class,'ConfirmarAgendamentos'])->middleware('auth')->name('pets.confirmar-agendamentos');
 
+Route::patch('/confirmar/adocao',[PetController::class,'confirmarAdocao'])->middleware('auth')->name('pets.confirmar-adocao');
 Route::post('/agendamentos',[PetController::class,'agendamentos'])->middleware('auth')->name('pets.agendamentos');
 
 Route::get('/contatos',[PetController::class,'contatos'])->name('pets.contatos');
