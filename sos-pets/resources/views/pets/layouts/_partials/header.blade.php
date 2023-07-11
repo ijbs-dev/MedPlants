@@ -52,7 +52,7 @@
         </x-dropdown-link>
         </form>
         @else
-        <a href="{{ route('register') }}" class="text-xl hover:text-cyan-500 duration-500" id="btn-cadastrar">Cadastrar</a>
+        <a href="{{ route('register') }}" class=" hover:text-cyan-500 duration-500" id="btn-cadastrar">Cadastrar</a>
         <a href="{{ route('login') }}" id="btn-entrar" class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded">Entrar</a>
       @endauth
 
