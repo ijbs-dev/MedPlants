@@ -15,7 +15,7 @@
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg container mx-auto">
 
-    <table class="w-full text-sm text-left text-white bg-gray-800">
+    <table class="w-full text-sm text-left text-white bg-gray-800 mb-12">
         <thead class="text-xs text-gray-100 uppercase bg-gray-800">
             <tr>
                 <th scope="col" class="px-6 py-3">
@@ -99,7 +99,7 @@
                         @method('DELETE')
                         <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">Remover</button>
                     </form>
-                    @if ($pet->situacao == 'aguardando')
+                    @if ($pet->situacao == 'agendado')
                     <form method="post" action="{{ route('pets.confirmar-adocao') }}">
                         @csrf
                         @method('PATCH')

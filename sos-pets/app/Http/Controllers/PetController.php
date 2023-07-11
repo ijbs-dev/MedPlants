@@ -24,13 +24,10 @@ class PetController extends Controller
 
     //private $pet;
 
-    public function index()
+    public function index(Request $request)
     {
 
-        //  $pets = Pet::with('user.adress')->get();
-
-        //  return view('pets.index',compact('pets'));
-        $pets = Pet::with('user.adress')->where('situacao', '!=', 'Adotado')->get();
+        $pets = Pet::with('user.adress')->where('situacao', '!=', 'Adotado')->paginate(6);
         return view('pets.index', compact('pets'));
 
     }
@@ -177,14 +174,14 @@ class PetController extends Controller
 
 
     // Verifique se o ID do usuário logado é o mesmo que o ID do proprietário do animal de estimação
-    $pet = Pet::findOrFail($petId);
+    // $pet = Pet::findOrFail($petId);
 
-    $pet->situacao = 'aguardando';
-    $pet->save();
+    // $pet->situacao = 'aguardando';
+    // $pet->save();
 
-    if ($pet->user_id == $usuarioLogadoId) {
-        return back()->with('error', 'Você não pode adotar seu próprio animal de estimação!');
-    }
+    // if ($pet->user_id == $usuarioLogadoId) {
+    //     return back()->with('error', 'Você não pode adotar seu próprio animal de estimação!');
+    // }
 
     $agendamentoExistente = DB::table('schedules')
         ->where('pet_id', $petId)
@@ -204,47 +201,67 @@ class PetController extends Controller
 
     public function meusAgendamentos(Request $request)
     {
-        // Obtém o usuário logado
-        $usuarioLogado = Auth::id();
+       
+       //  $usuarioLogado = Auth::id();
 
-        // Obtém todos os registros da tabela "Schedule" que pertencem ao usuário logado
-        //  $schedules = Schedule::where('user_id', $usuarioLogado->id)->get();
-        $schedules = Schedule::where('user_id', $usuarioLogado)->with('pet', 'user')->get();
+       //  $schedules = Schedule::join('pets', 'schedules.pet_id', '=', 'pets.id')
+       //  ->where('schedules.user_id', $usuarioLogado)
+       //  ->select('schedules.*', 'pets.nome as pet_nome')
+       //  ->with('user')
+       //  ->get();
 
-        //  $schedules = Schedule::with('pet', 'user')->get();
+       // return view('pets.agendamentos', ['schedules' => $schedules]);
 
-        //  foreach ($schedules as $schedule) {
-        //    $nomePet = $schedule->pet->nome; // Acesse o nome do pet
-        //    $nomeUsuario = $schedule->user->name; // Acesse o nome do usuário
-           // Faça algo com o nomePet e nomeUsuario
-        // }
+         $usuarioLogado = Auth::id();
 
-        // dd($schedule);
+        $schedules = Schedule::join('pets', 'schedules.pet_id', '=', 'pets.id')
+        ->where('schedules.user_id', $usuarioLogado)
+        ->select('schedules.*', 'pets.nome as pet_nome', 'pets.fotos as pet_fotos')
+        ->with('user', 'pet')
+        ->get();
 
+        //dd($schedules);
 
-         // Exibe os dados na view
-         return view('pets.agendamentos', ['schedules' => $schedules]);
+        return view('pets.agendamentos', ['schedules' => $schedules]);
+
     }
 
     public function validarAgendamentos(Request $request)
     {
+       // $usuarioId = Auth::id();
+
+       // $pets = Pet::where('user_id', $usuarioId)->pluck('id');
+
+       // $agendamentos = Schedule::whereIn('pet_id', $pets)->get();
+
+       //  foreach ($agendamentos as $agendamento) {
+       //      // $nomePet = $schedule->pet->nome; // Acesse o nome do pet
+       //      $nomeUsuario = $agendamento->user->name; // Acesse o nome do usuário
+       //      // Faça algo com o nomePet e nomeUsuario
+       //     $agendamentos->name = $nomeUsuario;
+       //  }
+
+       // return view('pets.validar-agendamentos', ['agendamentos' => $agendamentos]);
         $usuarioId = Auth::id();
 
        $pets = Pet::where('user_id', $usuarioId)->pluck('id');
 
-       $agendamentos = Schedule::whereIn('pet_id', $pets)->get();
+       $agendamentos = Schedule::whereIn('pet_id', $pets)->with('pet', 'user')->get();
 
         foreach ($agendamentos as $agendamento) {
-            // $nomePet = $schedule->pet->nome; // Acesse o nome do pet
-            $nomeUsuario = $agendamento->user->name; // Acesse o nome do usuário
-        // Faça algo com o nomePet e nomeUsuario
-        $agendamentos->name = $nomeUsuario;
+          $nomePet = $agendamento->pet->nome; // Acesse o nome do pet
+          $nomeUsuario = $agendamento->user->name; // Acesse o nome do usuário
+          // Faça algo com o nomePet e nomeUsuario
+          $agendamento->pet_name = $nomePet; // Adiciona o campo "pet_name" ao objeto $agendamento
         }
-       return view('pets.validar-agendamentos', ['agendamentos' => $agendamentos]);
+
+
+    return view('pets.validar-agendamentos', ['agendamentos' => $agendamentos]);
     }
 
     public function confirmarAgendamentos(Request $request)
     {
+        //velho
         // $user_id = $request->user_id;
         // $agendamento = Schedule::where('user_id', $user_id)->first();;
 
@@ -252,15 +269,32 @@ class PetController extends Controller
         //     'status' => $request->status
         // ]);
         // return back()->with('sucesso', 'Agendamento confirmado com sucesso.');
-        $pet_id = $request->pet_id;
-        $user_id = $request->user_id;
 
-        $agendamento = Schedule::where('pet_id', $pet_id)
-                                ->where('user_id', $user_id)
-                                ->update(['status' => $request->status]);
+        //novo
+        // $pet_id = $request->pet_id;
+        // $user_id = $request->user_id;
 
-        return back()->with('sucesso', 'Agendamento confirmado com sucesso.');
-}
+        // $agendamento = Schedule::where('pet_id', $pet_id)
+        //                         ->where('user_id', $user_id)
+        //                         ->update(['status' => $request->status]);
+
+        // return back()->with('sucesso', 'Agendamento confirmado com sucesso.');
+
+          $pet_id = $request->pet_id;
+          $user_id = $request->user_id;
+
+          // Atualiza o campo 'status' na tabela 'schedules'
+          $agendamento = Schedule::where('pet_id', $pet_id)
+          ->where('user_id', $user_id)
+           ->update(['status' => $request->status]);
+
+          // Atualiza o campo 'situacao' na tabela 'pets'
+          $pet = Pet::where('id', $pet_id)->first();
+          $pet->situacao = 'agendado';
+          $pet->save();
+
+          return back()->with('sucesso', 'Agendamento confirmado com sucesso.');
+    }
 
     public function confirmarAdocao(Request $request)
     {
@@ -283,5 +317,17 @@ class PetController extends Controller
     public function sobre()
     {
         return view('pets.sobre');
+    }
+
+    public function filtrarPets(Request $request)
+    {
+      $tipo = $request->input('tipo');
+
+      $pets = Pet::where('type_id', $tipo)
+                ->with('user.adress')
+                ->where('situacao', '!=', 'Adotado')
+                ->get();
+
+       return view('pets.index', compact('pets'));
     }
 }

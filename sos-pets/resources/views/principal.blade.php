@@ -18,7 +18,7 @@
 
      <title>@yield('titulo')</title>
 </head>
-<body id="page-top">
+<body>
 
     @include('pets.layouts._partials.header')
 

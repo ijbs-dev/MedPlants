@@ -68,11 +68,11 @@ overflow: hidden;
     background-size: cover;
     overflow: hidden;"
     >
-      <div class="flex justify-center px-6 my-12">
+<div class="flex justify-center px-6 my-12">
         <!-- Row -->
-        <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+  <div class="w-full xl:w-3/4 lg:w-11/12 flex">
 
-<div class="relativo mx-auto mt-8 mb-8 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<!-- <div class="relativo mx-auto mt-8 mb-8 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
       <img class="p-8 rounded-t-lg" src="{{ url("storage/{$pet->fotos}") }}" alt="product image" />
     </a>
@@ -101,13 +101,72 @@ overflow: hidden;
       <div>
         <p class="text-white">{{ $pet->descricao }}</p>
       </div>
-     <!--  <div class="flex items-center justify-between">
-        <span class="text-3xl font-bold text-gray-900 dark:text-white">{{ $pet->nome }}</span>
-        <button onclick="openModal()" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Agendar</button>
-      </div> -->
     </div>
-  </div>
+  </div> -->
 <!-- </div> -->
+
+ <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none mb-8">
+       <h3 class="mb-3 text-xl font-bold text-indigo-600"></h3> 
+      <div class="relative">
+        <img class="w-full rounded-xl" src="{{ url("storage/{$pet->fotos}") }}" alt="Colors" />
+        <!-- <p class="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">FREE</p> -->
+      </div>
+      <h1 class="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">{{$pet->nome}}</h1>
+      <div class="my-4">
+        <div class="flex space-x-1 items-center">
+         <!--  <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </span> -->
+          <p>Raça: {{ $pet->raca }}</p>
+        </div>
+        <div class="flex space-x-1 items-center">
+         <!--  <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </span> -->
+          <p>Idade: {{$pet->idade}}</p>
+        </div>
+        <div class="flex space-x-1 items-center">
+         <!--  <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </span> -->
+          @if ($pet->port_id == 1)
+            <p>Porte: Pequeno</p>
+          @elseif($pet->port_id == 2)
+             <p>Porte: Médio</p>
+          @elseif($pet->port_id == 3)
+            <p>Porte: Grande</p>
+          @endif
+        </div>
+         <div class="flex space-x-1 items-center">
+         <!--  <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </span> -->
+          @if ($pet->sex_id == 1)
+            <p>Sexo: Macho</p>
+          @elseif($pet->sex_id == 2)
+             <p>Sexo: Fêmea</p>
+          @endif
+        </div>
+         <div class="flex space-x-1 items-center">
+         <!--  <span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 mb-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </span> -->
+          <p>Descrição: {{$pet->descricao}}</p>
+        </div>
+        <!-- <button class="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">Buy Lesson</button> -->
+      </div>
+    </div>
+
 
 
           <!-- Col -->
@@ -174,140 +233,4 @@ overflow: hidden;
 
 
 
-
-
-<!-- Modal -->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <h2>Formulário</h2>
-    <form id="myForm">
-      <div class="form-group">
-        <label for="date">Data:</label>
-        <input type="date" id="date" name="date" required>
-      </div>
-      <div class="form-group">
-        <label for="time">Hora:</label>
-        <input type="time" id="time" name="time" required>
-      </div>
-      <div class="form-group">
-        <label for="observation">Observação:</label>
-        <textarea id="observation" name="observation" required></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit">Enviar</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<style>
-  /* Estilos para o modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 5px;
-  }
-
-  /* Estilos para os campos do formulário */
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  .form-group label {
-    display: block;
-    font-weight: bold;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .form-group textarea {
-    height: 80px;
-  }
-
-  .form-group button {
-    padding: 8px 16px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-</style>
-
-
-<script>
-window.onclick = function(event) {
-  var modal = document.getElementById("myModal");
-  if (event.target === modal) {
-    closeModal();
-  }
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById("myForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    var date = document.getElementById("date").value;
-    var time = document.getElementById("time").value;
-    var observation = document.getElementById("observation").value;
-
-    var data = {
-      date: date,
-      time: time,
-      observation: observation
-    };
-
-    console.log(data);
-
-    fetch("{{ route('pets.agendamentos') }}", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      },
-      body: JSON.stringify(data)
-    })
-    .then(function(response) {
-      if (response.ok) {
-        // A solicitação foi bem-sucedida
-        // Você pode adicionar aqui qualquer lógica adicional após o envio do formulário
-        closeModal();
-      } else {
-        // A solicitação falhou
-        throw new Error("Ocorreu um erro ao enviar o formulário.");
-      }
-    })
-    .catch(function(error) {
-      console.log("Ocorreu um erro ao enviar o formulário:", error);
-    });
-  });
-
-  function closeModal() {
-    modal.style.display = "none";
-  }
-});
-
-</script>
 @endsection

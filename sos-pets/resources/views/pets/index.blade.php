@@ -41,16 +41,18 @@
 
 
 
-<h2 class="text-4xl text-center  font-normal leading-normal mt-5 mb-2 text-sky-800">
+<h2 class="text-4xl text-center  font-normal leading-normal mt-5 mb-0 text-sky-800">
   Pets Cadastrados
 </h2>
 
 
 
+
  <div
     id="cards" class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 mb-20">
-    @foreach ($pets as $pet)
-<div class="flex min-h-screen items-center justify-center bg-slate-100">
+ @foreach ($pets as $pet)
+<!-- <div class="flex min-h-screen items-center justify-center bg-slate-100"> -->
+  <div class="mb-8">
   <div class="group h-96 w-80 [perspective:1000px]">
     <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
       <div class="absolute inset-0">
@@ -66,16 +68,38 @@
       </div>
     </div>
   </div>
-  <!-- <div class="fixed bottom-6">
-    <p class="text-lg font-semibold text-neutral-800">All Images are from <a href="https://unsplash.com" class="text-blue-600">Unsplash.com</a></p>
-    <p class="text-lg font-semibold text-neutral-800">Visit <a href="https://beyondbuilder.io" class="text-blue-600">BeyondBuilder.io</a> to get more Tailwind CSS UI Components.</p>
-  </div> -->
-</div>
- @endforeach
+</div> 
+ @endforeach 
+</div> 
 
 
+<nav aria-label="Page navigation example">
+  <ul class="inline-flex -space-x-px text-sm">
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+    </li>
+    <li>
+      <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+    </li>
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+    </li>
+  </ul>
+</nav>
 
-</div>
+
 
 
 @endsection
