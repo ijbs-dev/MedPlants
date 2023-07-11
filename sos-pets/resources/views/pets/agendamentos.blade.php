@@ -35,7 +35,7 @@
           <p class="text-gray-700 tracking-wide">
               Data: {{     date("d/m/Y", strtotime($schedule->adoption_date))}} <br>
               Hora: {{ date("H:i", strtotime($schedule->hour)) }}<br>
-              Status: {{$schedule->status}} <br>
+              Agendamento: {{$schedule->status}} <br>
               Observação: {{$schedule->observation}}
           </p>
           <!-- <button class="mt-6 py-2 px-4 bg-yellow-400 text-gray-800 font-bold rounded-lg shadow-md hover:shadow-lg transition duration-300">Buy Now</button> -->
@@ -47,7 +47,7 @@
     </div>
    @endforeach
    </div>
-</div> 
+</div>
 
 
 

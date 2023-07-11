@@ -25,7 +25,7 @@
         <!-- card1 -->
 
         @foreach($agendamentos as $agendamento)
-        <div class="max-w-sm p-6 bg-white border bg-blue-600 rounded-lg shadow ">
+        <div class="max-w-sm p-6 border bg-blue-600 rounded-lg shadow ">
 
             <p class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white"><span class="text-gray-800">Adotante: </span> {{ $agendamento->user->name }}</p>
 
